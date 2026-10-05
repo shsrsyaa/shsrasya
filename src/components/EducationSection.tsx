@@ -62,25 +62,24 @@ export const EducationSection: React.FC = () => {
           <div className="md:col-span-4">
             <ScrollReveal delay={200}>
               <div className="p-5 rounded-2xl bg-[#0e0f13] border border-zinc-800/90 shadow-md space-y-4">
-                <div className="flex items-center gap-2 pb-2 border-b border-zinc-800">
+                <div className="flex items-center gap-2 pb-2.5 border-b border-zinc-800">
                   <Globe className="w-4 h-4 text-blue-400" />
                   <h3 className="text-sm font-bold text-white font-display">Language Proficiency</h3>
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {MY_LANGUAGES.map((lang) => (
-                    <div key={lang.language} className="space-y-1">
-                      <div className="flex justify-between text-xs">
-                        <span className="font-medium text-zinc-200">{lang.language}</span>
-                        <span className="text-zinc-400 font-mono text-[11px]">{lang.proficiency}</span>
+                    <div key={lang.language} className="space-y-1.5">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="font-semibold text-zinc-200">{lang.language}</span>
+                        <span className="text-zinc-400 font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800">
+                          {lang.proficiency}
+                        </span>
                       </div>
-                      <div className="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
+                      <div className="h-1.5 w-full bg-zinc-900 rounded-full overflow-hidden border border-zinc-800/80">
                         <div
-                          className={`h-full rounded-full ${
-                            lang.proficiency === 'Native'
-                              ? 'w-full bg-gradient-to-r from-zinc-300 to-white'
-                              : 'w-[65%] bg-gradient-to-r from-zinc-400 to-blue-400'
-                          }`}
+                          className="h-full rounded-full bg-gradient-to-r from-blue-500 via-sky-400 to-indigo-400 transition-all duration-500"
+                          style={{ width: `${lang.level ?? (lang.language === 'Indonesian' ? 100 : 75)}%` }}
                         />
                       </div>
                     </div>

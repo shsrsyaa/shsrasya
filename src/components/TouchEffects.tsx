@@ -51,12 +51,12 @@ export const TouchEffects: React.FC = () => {
       {/* Subtle silver/ice-blue ambient aura following touch or pointer */}
       {isActive && (
         <div
-          className="absolute w-80 h-80 rounded-full -translate-x-1/2 -translate-y-1/2 transition-transform duration-100 ease-out"
+          className="absolute w-80 h-80 rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out"
           style={{
             left: `${pointerPos.x}px`,
             top: `${pointerPos.y}px`,
-            background: 'radial-gradient(circle, rgba(228, 228, 231, 0.06) 0%, rgba(96, 165, 250, 0.04) 35%, transparent 70%)',
-            filter: 'blur(30px)'
+            background: 'radial-gradient(circle, rgba(228, 228, 231, 0.05) 0%, rgba(96, 165, 250, 0.03) 40%, transparent 70%)',
+            filter: 'blur(35px)'
           }}
         />
       )}

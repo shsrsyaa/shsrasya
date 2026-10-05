@@ -1,9 +1,9 @@
-// Pure Vanilla JavaScript for shsrsyaa-sites
+// Vanilla JavaScript untuk Portofolio shsrsyaa-sites
 
 (function () {
   'use strict';
 
-  // 1. Audio Synthesizer for subtle tactile feedback
+  // 1. Audio Synthesizer untuk umpan balik taktil saat tombol diklik
   let audioCtx = null;
   function playTap(freq = 500, duration = 0.03) {
     try {
@@ -28,11 +28,11 @@
       osc.start();
       osc.stop(audioCtx.currentTime + duration);
     } catch (e) {
-      // Audio not supported or blocked
+      // Audio tidak didukung atau dicegah oleh peramban
     }
   }
 
-  // 2. Navigation without modifying URL hash (#)
+  // 2. Navigasi halus tanpa memunculkan hash (#) pada bilah URL
   function setupNavigation() {
     const navButtons = document.querySelectorAll('[data-target]');
     const mobileDrawer = document.getElementById('mobileDrawer');
@@ -55,7 +55,7 @@
       });
     });
 
-    // Mobile menu toggle
+    // Buka/tutup menu navigasi ponsel
     const toggleBtn = document.getElementById('mobileMenuToggle');
     if (toggleBtn && mobileDrawer) {
       toggleBtn.addEventListener('click', () => {
@@ -64,7 +64,7 @@
       });
     }
 
-    // Scroll to top button in footer
+    // Tombol kembali ke atas pada footer
     const scrollTopBtn = document.getElementById('scrollTopBtn');
     if (scrollTopBtn) {
       scrollTopBtn.addEventListener('click', () => {
@@ -73,7 +73,7 @@
       });
     }
 
-    // Navbar scroll blur effect
+    // Efek keburaman navbar saat digulir
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
@@ -84,52 +84,26 @@
     }, { passive: true });
   }
 
-  // 3. Interactive Parallax Background & Cursor Spotlight
+  // 3. Efek Latar Belakang Tenang & Partikel Lambat Berkelanjutan
   function setupBackground() {
     const bgParallax = document.getElementById('bgParallax');
-    const spotlight = document.getElementById('spotlight');
+    let startTime = performance.now();
 
-    let mouseX = 0.5;
-    let mouseY = 0.3;
-    let currentX = 0;
-    let currentY = 0;
-    let targetX = 0;
-    let targetY = 0;
-
-    window.addEventListener('mousemove', e => {
-      const normX = e.clientX / window.innerWidth;
-      const normY = e.clientY / window.innerHeight;
-      mouseX = normX;
-      mouseY = normY;
-
-      targetX = (normX - 0.5) * -35;
-      targetY = (normY - 0.5) * -25;
-
-      if (spotlight) {
-        spotlight.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-        spotlight.style.opacity = '1';
-      }
-    }, { passive: true });
-
-    document.addEventListener('mouseleave', () => {
-      targetX = 0;
-      targetY = 0;
-      if (spotlight) spotlight.style.opacity = '0';
-    });
-
-    function animateBg() {
-      currentX += (targetX - currentX) * 0.06;
-      currentY += (targetY - currentY) * 0.06;
+    function animateBg(time) {
+      const elapsed = time - startTime;
+      const panX = Math.sin(elapsed * 0.00012) * 12;
+      const panY = Math.cos(elapsed * 0.00009) * 8;
+      const scale = 1.05 + Math.sin(elapsed * 0.00007) * 0.015;
 
       if (bgParallax) {
-        bgParallax.style.transform = `scale(1.08) translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
+        bgParallax.style.transform = `scale(${scale.toFixed(4)}) translate3d(${panX.toFixed(2)}px, ${panY.toFixed(2)}px, 0)`;
       }
 
       requestAnimationFrame(animateBg);
     }
-    animateBg();
+    requestAnimationFrame(animateBg);
 
-    // Ambient floating sparks on canvas
+    // Partikel ambient lambat pada canvas
     const canvas = document.getElementById('ambientCanvas');
     if (canvas) {
       const ctx = canvas.getContext('2d');
@@ -141,43 +115,58 @@
         height = canvas.height = window.innerHeight;
       });
 
-      const particleCount = Math.min(45, Math.floor((width * height) / 30000));
+      const particleCount = Math.min(38, Math.floor((width * height) / 38000));
       const particles = [];
       const colors = [
         'rgba(56, 189, 248, ',
         'rgba(147, 197, 253, ',
-        'rgba(251, 191, 36, ',
+        'rgba(167, 139, 250, ',
         'rgba(255, 255, 255, '
       ];
 
       for (let i = 0; i < particleCount; i++) {
-        const baseAlpha = Math.random() * 0.45 + 0.2;
+        const x = Math.random() * width;
         particles.push({
-          x: Math.random() * width,
+          x,
+          baseX: x,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: -Math.random() * 0.4 - 0.15,
-          size: Math.random() * 2 + 0.8,
-          alpha: baseAlpha,
-          baseAlpha,
-          color: colors[Math.floor(Math.random() * colors.length)]
+          vy: -(Math.random() * 0.18 + 0.07),
+          size: Math.random() * 2.2 + 0.8,
+          alpha: Math.random() * 0.35 + 0.15,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          swayOffset: Math.random() * 100
         });
       }
 
-      function renderParticles() {
+      function renderParticles(timestamp) {
         ctx.clearRect(0, 0, width, height);
 
         for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distSq = dx * dx + dy * dy;
+            if (distSq < 7200) {
+              const alpha = (1 - Math.sqrt(distSq) / 85) * 0.06;
+              ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (let i = 0; i < particles.length; i++) {
           const p = particles[i];
-          p.x += p.vx;
+          p.x = p.baseX + Math.sin((timestamp * 0.0004) + p.swayOffset) * 16;
           p.y += p.vy;
 
-          if (p.y < -10) {
-            p.y = height + 10;
-            p.x = Math.random() * width;
+          if (p.y < -15) {
+            p.y = height + 15;
+            p.baseX = Math.random() * width;
+            p.x = p.baseX;
           }
-          if (p.x < -10) p.x = width + 10;
-          if (p.x > width + 10) p.x = -10;
 
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -187,11 +176,11 @@
 
         requestAnimationFrame(renderParticles);
       }
-      renderParticles();
+      requestAnimationFrame(renderParticles);
     }
   }
 
-  // 4. Tilt Card Effect
+  // 4. Efek Kemiringan 3D pada Kartu (Tilt Cards)
   function setupTiltCards() {
     const cards = document.querySelectorAll('.tilt-card');
     cards.forEach(card => {
@@ -214,7 +203,7 @@
     });
   }
 
-  // 5. Scroll Reveal with IntersectionObserver
+  // 5. Animasi Muncul Halus saat Digulir (IntersectionObserver)
   function setupScrollReveal() {
     const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries, obs) => {
@@ -231,7 +220,7 @@
     revealElements.forEach(el => observer.observe(el));
   }
 
-  // 6. CV Modal Dialog & Print
+  // 6. Modal Dialog CV & Cetak / PDF
   function setupModal() {
     const modal = document.getElementById('resumeModal');
     const openBtn = document.getElementById('openResumeBtn');
@@ -269,7 +258,7 @@
     }
   }
 
-  // 7. Clipboard Email Copy
+  // 7. Salin Alamat Email ke Papan Klip
   function setupCopyEmail() {
     const copyBtn = document.getElementById('copyEmailBtn');
     const copyText = document.getElementById('copyEmailText');
@@ -280,7 +269,7 @@
         const email = 'tuddechnnel07@gmail.com';
         navigator.clipboard.writeText(email).then(() => {
           const original = copyText.innerText;
-          copyText.innerText = 'Copied to Clipboard!';
+          copyText.innerText = 'Alamat Email Berhasil Disalin!';
           setTimeout(() => {
             copyText.innerText = original;
           }, 2000);
@@ -289,7 +278,7 @@
     }
   }
 
-  // Initialize all features once DOM is ready
+  // Inisialisasi seluruh fitur saat dokumen siap
   document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     setupBackground();

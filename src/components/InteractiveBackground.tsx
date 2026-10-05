@@ -1,66 +1,35 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import itsCampusBg from '../assets/images/Institut Teknologi Sepuluh November.jpg';
 
 export const InteractiveBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.3 });
-  const [isHovering, setIsHovering] = useState(false);
-
-  // Parallax smooth interpolation
-  const posRef = useRef({ currentX: 0, currentY: 0, targetX: 0, targetY: 0 });
   const bgImageRef = useRef<HTMLDivElement>(null);
-  const spotlightRef = useRef<HTMLDivElement>(null);
 
+  // 1. Slow, continuous, autonomous background drift (constant majestic motion, NOT tied to cursor jerking)
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { innerWidth, innerHeight } = window;
-      const normX = e.clientX / innerWidth;
-      const normY = e.clientY / innerHeight;
-      setMousePos({ x: normX, y: normY });
-      setIsHovering(true);
-
-      // Smooth parallax offset
-      posRef.current.targetX = (normX - 0.5) * -35;
-      posRef.current.targetY = (normY - 0.5) * -25;
-
-      // Spotlight coordinates
-      if (spotlightRef.current) {
-        spotlightRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-      }
-    };
-
-    const handleMouseLeave = () => {
-      setIsHovering(false);
-      posRef.current.targetX = 0;
-      posRef.current.targetY = 0;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    document.addEventListener('mouseleave', handleMouseLeave);
-
-    // Smooth RAF loop for parallax
     let animId: number;
-    const animate = () => {
-      const state = posRef.current;
-      state.currentX += (state.targetX - state.currentX) * 0.06;
-      state.currentY += (state.targetY - state.currentY) * 0.06;
+    let startTime = performance.now();
+
+    const animateDrift = (time: number) => {
+      const elapsed = time - startTime;
+      
+      // Extremely slow, graceful organic pan and gentle breathing scale
+      const panX = Math.sin(elapsed * 0.00012) * 12;
+      const panY = Math.cos(elapsed * 0.00009) * 8;
+      const scale = 1.05 + Math.sin(elapsed * 0.00007) * 0.015;
 
       if (bgImageRef.current) {
-        bgImageRef.current.style.transform = `scale(1.08) translate3d(${state.currentX.toFixed(2)}px, ${state.currentY.toFixed(2)}px, 0)`;
+        bgImageRef.current.style.transform = `scale(${scale.toFixed(4)}) translate3d(${panX.toFixed(2)}px, ${panY.toFixed(2)}px, 0)`;
       }
 
-      animId = requestAnimationFrame(animate);
+      animId = requestAnimationFrame(animateDrift);
     };
-    animId = requestAnimationFrame(animate);
 
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      cancelAnimationFrame(animId);
-    };
+    animId = requestAnimationFrame(animateDrift);
+    return () => cancelAnimationFrame(animId);
   }, []);
 
-  // Ambient interactive particles reflecting campus atmosphere
+  // 2. Slow-floating ambient bubbles & gentle constellation particles
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -80,76 +49,88 @@ export const InteractiveBackground: React.FC = () => {
     interface Particle {
       x: number;
       y: number;
-      vx: number;
+      baseX: number;
       vy: number;
+      speedModifier: number;
       size: number;
       alpha: number;
-      baseAlpha: number;
+      pulseAngle: number;
       color: string;
+      swayOffset: number;
     }
 
-    const particleCount = Math.min(45, Math.floor((width * height) / 30000));
+    const particleCount = Math.min(38, Math.floor((width * height) / 38000));
     const particles: Particle[] = [];
 
     const colors = [
-      'rgba(56, 189, 248, ',  // ITS Blue
-      'rgba(147, 197, 253, ', // Ice blue
-      'rgba(251, 191, 36, ',  // Pagoda roof warm gold
-      'rgba(255, 255, 255, '  // Starlight
+      'rgba(56, 189, 248, ',  // Soft ITS blue
+      'rgba(147, 197, 253, ', // Ice cyan
+      'rgba(167, 139, 250, ', // Subtle lavender
+      'rgba(255, 255, 255, '  // Pure starlight
     ];
 
     for (let i = 0; i < particleCount; i++) {
-      const baseAlpha = Math.random() * 0.45 + 0.2;
+      const x = Math.random() * width;
       particles.push({
-        x: Math.random() * width,
+        x,
+        baseX: x,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: -Math.random() * 0.4 - 0.15,
-        size: Math.random() * 2 + 0.8,
-        alpha: baseAlpha,
-        baseAlpha,
-        color: colors[Math.floor(Math.random() * colors.length)]
+        vy: -(Math.random() * 0.18 + 0.07), // Very slow, calm upward float
+        speedModifier: Math.random() * 0.4 + 0.8,
+        size: Math.random() * 2.2 + 0.8,
+        alpha: Math.random() * 0.35 + 0.15,
+        pulseAngle: Math.random() * Math.PI * 2,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        swayOffset: Math.random() * 100
       });
     }
 
     let particleAnimId: number;
-    let mousePixX = width * 0.5;
-    let mousePixY = height * 0.3;
 
-    const render = () => {
+    const render = (timestamp: number) => {
       ctx.clearRect(0, 0, width, height);
 
-      mousePixX += ((mousePos.x * width) - mousePixX) * 0.1;
-      mousePixY += ((mousePos.y * height) - mousePixY) * 0.1;
+      // Draw subtle constellation connections between close slow particles
+      ctx.lineWidth = 0.6;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const distSq = dx * dx + dy * dy;
+          if (distSq < 7200) { // ~85px distance
+            const alpha = (1 - Math.sqrt(distSq) / 85) * 0.06;
+            ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
 
+      // Update and draw each bubble/particle
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        const dx = p.x - mousePixX;
-        const dy = p.y - mousePixY;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 200 && isHovering) {
-          const force = (200 - dist) / 200;
-          p.x += (dx / dist) * force * 1.5;
-          p.y += (dy / dist) * force * 1.5;
-          p.alpha = Math.min(0.9, p.baseAlpha + force * 0.5);
-        } else {
-          p.alpha += (p.baseAlpha - p.alpha) * 0.05;
+        // Constant, ultra-slow floating motion (gentle sine wave sway)
+        p.pulseAngle += 0.008;
+        const currentAlpha = p.alpha + Math.sin(p.pulseAngle) * 0.08;
+        
+        // Gentle horizontal sway
+        p.x = p.baseX + Math.sin((timestamp * 0.0004) + p.swayOffset) * 16;
+        p.y += p.vy * p.speedModifier;
+
+        // Wrap around smoothly
+        if (p.y < -15) {
+          p.y = height + 15;
+          p.baseX = Math.random() * width;
+          p.x = p.baseX;
         }
 
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.y < -10) {
-          p.y = height + 10;
-          p.x = Math.random() * width;
-        }
-        if (p.x < -10) p.x = width + 10;
-        if (p.x > width + 10) p.x = -10;
-
+        // Draw soft ambient particle glow
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `${p.color}${p.alpha})`;
+        ctx.fillStyle = `${p.color}${Math.max(0.05, Math.min(0.7, currentAlpha))})`;
         ctx.fill();
       }
 
@@ -162,35 +143,35 @@ export const InteractiveBackground: React.FC = () => {
       window.removeEventListener('resize', handleResize);
       cancelAnimationFrame(particleAnimId);
     };
-  }, [mousePos, isHovering]);
+  }, []);
 
   return (
     <div
       aria-hidden="true"
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#060709]"
     >
-      {/* 1. Clear & Recognizable Campus Landmark Image with Parallax & Soft Professional Blur */}
+      {/* 1. Clear Campus Landmark with Slow Cinematic Drift */}
       <div
         ref={bgImageRef}
-        className="absolute -inset-12 w-[calc(100%+96px)] h-[calc(100%+96px)] transition-transform duration-100 ease-out will-change-transform"
+        className="absolute -inset-10 w-[calc(100%+80px)] h-[calc(100%+80px)] transition-transform duration-1000 ease-out will-change-transform"
       >
         <img
           src={itsCampusBg}
           alt="Institut Teknologi Sepuluh Nopember Campus Backdrop"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-[center_30%] filter blur-[3px] md:blur-[4px] brightness-[0.55] saturate-[1.2] contrast-[1.1]"
+          className="w-full h-full object-cover object-[center_30%] filter blur-[3px] md:blur-[4px] brightness-[0.52] saturate-[1.15] contrast-[1.08]"
         />
       </div>
 
-      {/* 2. Top-to-Bottom Shadow Vignette: subtle in center, smooth dark framing at navbar & footer */}
+      {/* 2. Top-to-Bottom Shadow Vignette */}
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, rgba(6, 7, 9, 0.72) 0%, rgba(6, 7, 9, 0.28) 20%, rgba(6, 7, 9, 0.38) 55%, rgba(6, 7, 9, 0.85) 85%, #060709 100%)'
+          background: 'linear-gradient(180deg, rgba(6, 7, 9, 0.75) 0%, rgba(6, 7, 9, 0.28) 22%, rgba(6, 7, 9, 0.38) 55%, rgba(6, 7, 9, 0.88) 85%, #060709 100%)'
         }}
       />
 
-      {/* 3. Radial Shadow Vignette for Elegant Edge Falloff */}
+      {/* 3. Radial Shadow Vignette for Smooth Focus */}
       <div
         className="absolute inset-0"
         style={{
@@ -198,17 +179,15 @@ export const InteractiveBackground: React.FC = () => {
         }}
       />
 
-      {/* 4. Interactive Cursor Spotlight: gently illuminates the architecture as cursor glides */}
+      {/* 4. Slow Breathing Celestial Ambient Aura (Enhancement Effect) */}
       <div
-        ref={spotlightRef}
-        className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] rounded-full pointer-events-none transition-opacity duration-300"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[550px] rounded-full pointer-events-none opacity-40 blur-[130px]"
         style={{
-          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(245, 158, 11, 0.05) 35%, transparent 70%)',
-          opacity: isHovering ? 1 : 0
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%)'
         }}
       />
 
-      {/* 5. Ambient Interactive Floating Sparks / Campus Atmosphere */}
+      {/* 5. Ambient Slow-Floating Bubbles & Starlight Canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none opacity-90"
@@ -216,7 +195,7 @@ export const InteractiveBackground: React.FC = () => {
 
       {/* 6. Subtle Modern Fine Grid Texture */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.035]"
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
           backgroundImage: `linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)`,
           backgroundSize: '40px 40px'

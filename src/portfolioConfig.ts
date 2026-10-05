@@ -86,8 +86,8 @@ export const MY_SKILLS_CATEGORIES = [
 ];
 
 export const MY_LANGUAGES = [
-  { language: 'Indonesian', proficiency: 'Native / Bilingual' },
-  { language: 'English', proficiency: 'Pre-Intermediate / Working Proficiency' }
+  { language: 'Indonesian', proficiency: 'Native / Fluent', level: 100 },
+  { language: 'English', proficiency: 'Working Proficiency', level: 75 }
 ];
 
 export const MY_ORGANIZATIONS = [

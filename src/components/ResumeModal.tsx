@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Printer, GraduationCap, Briefcase, Award, Mail, Instagram, Linkedin, MapPin, Globe } from 'lucide-react';
+import { X, GraduationCap, Briefcase, Award, Mail, Instagram, Linkedin, MapPin, Globe } from 'lucide-react';
 import { MY_PROFILE, MY_EDUCATION, MY_ORGANIZATIONS } from '../portfolioConfig';
 
 interface ResumeModalProps {
@@ -23,22 +23,13 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             Curriculum Vitae / Resume
           </span>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => window.print()}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 rounded-lg transition-colors cursor-pointer"
-            >
-              <Printer className="w-3.5 h-3.5 text-blue-400" />
-              <span>Print / PDF</span>
-            </button>
-            <button
-              onClick={onClose}
-              className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors cursor-pointer"
-              aria-label="Close"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
+          <button
+            onClick={onClose}
+            className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors cursor-pointer"
+            aria-label="Close"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
         {/* Scrollable Document */}
@@ -126,16 +117,6 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             </div>
           </div>
 
-        </div>
-
-        {/* Footer */}
-        <div className="px-6 py-3 border-t border-zinc-800 bg-zinc-950 flex justify-end">
-          <button
-            onClick={onClose}
-            className="px-4 py-1.5 text-xs font-semibold text-zinc-300 hover:text-white bg-zinc-900 border border-zinc-800 rounded-lg transition-colors cursor-pointer"
-          >
-            Close
-          </button>
         </div>
 
       </div>
