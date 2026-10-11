@@ -8,9 +8,9 @@ import rasyaHeadshot from './assets/images/rasya_headshot_1791083407317.jpg';
 
 export const MY_PROFILE = {
   fullName: 'I P. G. Divy Sahasrasya',
-  name: 'Sahasrasya',
+  name: 'Rasya',
   callName: 'Rasya',
-  title: 'Digital Innovation & Venture Studio Lead',
+  title: 'Information System - Digital Innovation',
   role: 'Frontend Engineering, Rapid Prototyping & Startup Operations',
   institution: 'Institut Teknologi Sepuluh Nopember (ITS)',
   location: 'Surabaya, Indonesia',
