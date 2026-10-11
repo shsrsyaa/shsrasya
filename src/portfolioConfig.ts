@@ -1,11 +1,6 @@
 import itsSidePhoto from './assets/images/foto_samping_its_1791082807812.jpg';
 import rasyaHeadshot from './assets/images/rasya_headshot_1791083407317.jpg';
 
-/**
- * Portfolio Data for I P. G. Divy Sahasrasya (Rasya)
- * Corporate Tech Venture & Digital Studio Lead
- */
-
 export const MY_PROFILE = {
   fullName: 'I P. G. Divy Sahasrasya',
   name: 'Rasya',
