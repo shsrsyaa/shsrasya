@@ -6,7 +6,7 @@ export const MY_PROFILE = {
   name: 'Rasya',
   callName: 'Rasya',
   title: 'Information System - Digital Innovation',
-  role: 'Frontend Engineering, Rapid Prototyping & Startup Operations',
+  role: 'Frontend Engineering, Rapid Prototyping & Operations',
   institution: 'Institut Teknologi Sepuluh Nopember (ITS)',
   location: 'Surabaya, Indonesia',
   origin: 'Bali, Indonesia',
@@ -55,13 +55,13 @@ export const MY_SERVICES = [
   {
     id: 'startup-advisory',
     title: 'Startup MVP Advisory',
-    subtitle: 'Product Scoping & Go-To-Market Execution',
-    description: 'Translating early-stage concepts into lean, market-ready MVPs. Structuring feature prioritization, agile development sprints, and tactical go-to-market operational roadmaps.',
+    subtitle: 'Product Scoping & Market Execution',
+    description: 'Translating early stage concepts into lean, market ready MVPs. Structuring feature prioritization, agile development sprints, and tactical market operational roadmaps.',
     deliverables: [
       'Value Proposition & Lean Canvas Definition',
       'Minimum Viable Product (MVP) Scope Definition',
       'Sprint Planning & Agile Delivery Cadence',
-      'Go-To-Market Launch Strategy & Operations'
+      'Market Launch Strategy & Operations'
     ],
     technologies: ['Product Management', 'GTM Strategy', 'Agile Operations', 'KPI Systems'],
     badge: 'Strategy'
@@ -70,7 +70,7 @@ export const MY_SERVICES = [
     id: 'video-production',
     title: 'Creative Video Production',
     subtitle: 'Visual Content, Motion Storytelling & Media Assets',
-    description: 'End-to-end creative video production and editing for high-engagement product launches, investor reels, event documentaries, and social media brand communication.',
+    description: 'End-to-end creative video production and editing for high engagement product launches, investor reels, event documentaries, and social media brand communication.',
     deliverables: [
       'Short-Form Video Editing (Reels, TikTok, Shorts)',
       'Promotional Launch Trailers & Product Overviews',
@@ -85,13 +85,13 @@ export const MY_SERVICES = [
 export const MY_CASE_STUDIES = [
   {
     id: 'banjar-youth',
-    title: 'Multi-Term Traditional Festival Logistics & Resource Command',
+    title: 'Multi Term Traditional Festival Logistics & Resource Command',
     organization: 'Banjar Youth Organization (STT)',
     role: 'Event Logistics & Operations Lead',
     period: '2024 & 2025',
     location: 'Semarapura, Bali',
     category: 'Operations & Logistics',
-    problem: 'Multi-day traditional and community festivities demanded synchronization of distributed local vendor supplies, volatile temporary electrical grids, physical staging, and multi-thousand-dollar communal asset inventories with zero tolerance for blackout or operational downtime.',
+    problem: 'Multi day traditional and community festivities demanded synchronization of distributed local vendor supplies, volatile temporary electrical grids, physical staging, and multi-thousand-dollar communal asset inventories with zero tolerance for blackout or operational downtime.',
     solution: 'Designed a standardized logistics manifest and physical supply pipeline. Deployed specialized sub-teams across electrical infrastructure, acoustic staging, and security checkpoints with morning daily stand-ups and active contingency protocols.',
     techStack: ['Operations Manifesting', 'Resource Logistics', 'Safety Protocols', 'Audio-Visual Staging', 'Cross-Functional Leadership'],
     metrics: [
@@ -252,7 +252,7 @@ export const MY_SKILLS_CATEGORIES = [
 ];
 
 export const MY_LANGUAGES = [
-  { language: 'Indonesian', proficiency: 'Native / Fluent', level: 100 },
+  { language: 'Indonesian', proficiency: 'Native / Fluent', level: 90 },
   { language: 'English', proficiency: 'Working Professional Proficiency', level: 75 }
 ];
 
