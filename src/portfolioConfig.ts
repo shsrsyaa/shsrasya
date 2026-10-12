@@ -46,7 +46,7 @@ export const MY_SERVICES = [
     deliverables: [
       'Qualitative User Research & Persona Mapping',
       'Low & High-Fidelity Interactive Wireframing',
-      'Design System Foundations & Style Tokens',
+      'Design System Foundations',
       'Usability Audits & User Friction Elimination'
     ],
     technologies: ['User Research', 'Rapid Prototyping', 'Wireframing', 'UX Audits'],
