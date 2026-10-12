@@ -53,7 +53,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onNavigateToTab }) => 
                 Hi! I'm <span className="silver-text">Rasya</span><span className="text-white">.</span>
               </h1>
               <p className="text-sm sm:text-base font-bold text-zinc-300 font-mono tracking-tight">
-                Digital Innovation &amp; Tech Systems Builder
+                Information System - Digital Innovation
               </p>
             </div>
 
