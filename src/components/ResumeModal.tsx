@@ -12,20 +12,22 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div
-        className="relative w-full max-w-3xl max-h-[92vh] bg-[#0c0d11] border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col text-zinc-200"
+        <div className="relative w-full max-w-3xl max-h-[92vh] bg-[#080808]/95 backdrop-blur-2xl border border-white/15 rounded-2xl shadow-2xl overflow-hidden flex flex-col text-zinc-200"
         onClick={(e) => e.stopPropagation()}
       >
         
         {/* Top bar */}
-        <div className="flex items-center justify-between px-6 py-3.5 border-b border-zinc-800 bg-zinc-950/80">
-          <span className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
-            Curriculum Vitae / Resume
-          </span>
+        <div className="flex items-center justify-between px-6 py-3.5 border-b border-white/10 bg-black/40 backdrop-blur-md">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-white shadow-sm shadow-white/60"></span>
+            <span className="text-xs font-mono text-zinc-300 uppercase tracking-wider font-bold">
+              Curriculum Vitae / Resume
+            </span>
+          </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-white hover:bg-white/20 bg-white/10 transition-colors cursor-pointer"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
@@ -33,16 +35,16 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Scrollable Document */}
-        <div className="overflow-y-auto p-6 sm:p-8 space-y-6 text-xs sm:text-sm bg-[#08090c]">
+        <div className="overflow-y-auto p-6 sm:p-8 space-y-6 text-xs sm:text-sm bg-black/50">
           
           {/* Header */}
-          <div className="border-b border-zinc-800 pb-5 space-y-2">
+          <div className="border-b border-white/10 pb-5 space-y-2">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
               <div>
-                <h1 className="text-2xl font-bold font-display text-white">
-                  {MY_PROFILE.fullName} ({MY_PROFILE.name})
+                <h1 className="text-2xl font-black font-display text-white">
+                  {MY_PROFILE.fullName} <span className="silver-text">({MY_PROFILE.name})</span>
                 </h1>
-                <p className="text-xs font-mono text-zinc-400 mt-0.5">
+                <p className="text-xs font-mono text-zinc-300 mt-0.5 font-bold">
                   {MY_PROFILE.institution} · Department of Information Systems
                 </p>
               </div>
@@ -61,8 +63,8 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
           {/* Education */}
           <div className="space-y-3">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-300 flex items-center gap-2 border-b border-zinc-800/80 pb-1.5">
-              <GraduationCap className="w-3.5 h-3.5 text-blue-400" />
+            <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-300 flex items-center gap-2 border-b border-white/10 pb-1.5">
+              <GraduationCap className="w-3.5 h-3.5 text-white" />
               <span>EDUCATION</span>
             </h2>
 
@@ -82,8 +84,8 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
 
           {/* Organizations */}
           <div className="space-y-3">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-300 flex items-center gap-2 border-b border-zinc-800/80 pb-1.5">
-              <Briefcase className="w-3.5 h-3.5 text-zinc-400" />
+            <h2 className="text-xs font-bold uppercase tracking-wider text-zinc-300 flex items-center gap-2 border-b border-white/10 pb-1.5">
+              <Briefcase className="w-3.5 h-3.5 text-white" />
               <span>ORGANIZATIONAL &amp; LEADERSHIP EXPERIENCE</span>
             </h2>
 

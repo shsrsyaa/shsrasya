@@ -32,13 +32,13 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
   const getToolkitIcon = (category: string) => {
     switch (category) {
       case 'Frontend Web Engineering':
-        return <Code className="w-4 h-4 text-blue-400" />;
+        return <Code className="w-4 h-4 text-white" />;
       case 'Product Design & Prototyping':
-        return <Layers className="w-4 h-4 text-indigo-400" />;
+        return <Layers className="w-4 h-4 text-zinc-300" />;
       case 'Venture Management & GTM':
-        return <CheckCircle2 className="w-4 h-4 text-emerald-400" />;
+        return <CheckCircle2 className="w-4 h-4 text-white" />;
       case 'Creative Video & Visual Media':
-        return <Video className="w-4 h-4 text-pink-400" />;
+        return <Video className="w-4 h-4 text-zinc-300" />;
       default:
         return <Wrench className="w-4 h-4 text-zinc-400" />;
     }
@@ -50,10 +50,10 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
         
         {/* Executive Profile Header Card */}
         <ScrollReveal>
-          <div className="p-6 sm:p-8 rounded-3xl bg-[#0c0e12] border border-zinc-800 shadow-2xl space-y-6">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-zinc-800/80">
+          <div className="p-6 sm:p-8 rounded-3xl bg-black/40 backdrop-blur-xl border border-white/15 shadow-2xl space-y-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-white/10">
               <div className="flex items-center gap-5">
-                <div className="w-20 h-20 rounded-2xl overflow-hidden border border-zinc-700 bg-zinc-900 shrink-0">
+                <div className="w-20 h-20 rounded-2xl overflow-hidden border border-white/20 bg-black shrink-0">
                   <img
                     src={MY_PROFILE.avatar}
                     alt={MY_PROFILE.name}
@@ -63,22 +63,23 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
                       (e.target as HTMLElement).style.display = 'none';
                     }}
                   />
-                  <div className="w-full h-full flex items-center justify-center text-white font-bold text-lg bg-zinc-800">
+                  <div className="w-full h-full flex items-center justify-center text-white font-bold text-lg bg-zinc-900">
                     R
                   </div>
                 </div>
 
                 <div className="space-y-1">
-                  <div className="inline-flex items-center gap-2 text-xs font-mono text-blue-400">
+                  <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">
+                    <span className="w-2 h-2 rounded-full bg-white shadow-sm shadow-white/60"></span>
                     <span>Founder &amp; Principal</span>
-                    <span aria-hidden="true">·</span>
-                    <span>Department of Information Systems, ITS</span>
+                    <span aria-hidden="true" className="text-zinc-500">·</span>
+                    <span className="text-zinc-300">ITS Surabaya</span>
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-white">
+                  <h1 className="text-3xl sm:text-4xl font-black font-display text-white tracking-tight">
                     {MY_PROFILE.fullName}
                   </h1>
                   <p className="text-xs text-zinc-400 font-mono">
-                    Call name: <span className="text-white">{MY_PROFILE.callName}</span> · {MY_PROFILE.role}
+                    Call name: <span className="text-white font-bold">{MY_PROFILE.callName}</span> · {MY_PROFILE.role}
                   </p>
                 </div>
               </div>
@@ -90,9 +91,9 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
                     playTapSound(550, 0.04);
                     onOpenResume();
                   }}
-                  className="px-4 py-2.5 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-semibold text-xs transition-all flex items-center gap-2 self-start md:self-auto cursor-pointer shadow-sm active:scale-95"
+                  className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white font-extrabold text-xs transition-all flex items-center gap-2 self-start md:self-auto cursor-pointer shadow-sm active:scale-95 group"
                 >
-                  <FileText className="w-4 h-4 text-blue-600" />
+                  <FileText className="w-4 h-4 text-white" />
                   <span>View Full CV &amp; Dossier</span>
                 </button>
               )}
@@ -105,33 +106,33 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
                 <p className="text-zinc-400 text-xs leading-relaxed">{MY_PROFILE.extendedBio}</p>
               </div>
 
-              <div className="md:col-span-4 p-4 rounded-xl bg-zinc-950/80 border border-zinc-800/80 space-y-2.5 text-xs text-zinc-400">
-                <div className="flex items-center gap-2 text-zinc-200 font-medium">
-                  <MapPin className="w-3.5 h-3.5 text-blue-400" />
+              <div className="md:col-span-4 p-4 rounded-xl bg-white/5 border border-white/10 space-y-2.5 text-xs text-zinc-300">
+                <div className="flex items-center gap-2 text-white font-semibold">
+                  <MapPin className="w-3.5 h-3.5 text-white" />
                   <span>{MY_PROFILE.location}</span>
                 </div>
-                <div className="text-[11px] text-zinc-500 font-mono">
+                <div className="text-[11px] text-zinc-400 font-mono">
                   Origin: {MY_PROFILE.origin}
                 </div>
-                <div className="pt-2 border-t border-zinc-800/80 flex items-center gap-3 text-xs">
+                <div className="pt-2 border-t border-white/10 flex items-center gap-3 text-xs font-mono">
                   <a
                     href={MY_PROFILE.socials.instagram}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-pink-400 hover:text-pink-300 flex items-center gap-1"
+                    className="text-white hover:text-zinc-300 flex items-center gap-1 font-bold"
                   >
                     <Instagram className="w-3.5 h-3.5" />
                     <span>Instagram</span>
                   </a>
-                  <span aria-hidden="true" className="text-zinc-700">·</span>
+                  <span aria-hidden="true" className="text-zinc-600">·</span>
                   <a
                     href={MY_PROFILE.socials.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-blue-400 hover:text-blue-300 flex items-center gap-1 font-medium"
+                    className="text-white hover:text-zinc-300 flex items-center gap-1 font-bold"
                   >
                     <span>LinkedIn</span>
-                    <ArrowUpRight className="w-3 h-3" />
+                    <ArrowUpRight className="w-3 h-3 text-white" />
                   </a>
                 </div>
               </div>
@@ -147,20 +148,20 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
             
             {/* Education Cards */}
             <div className="space-y-4">
-              <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block font-mono">
+              <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest block font-mono">
                 Academic Background:
               </span>
               
               {MY_EDUCATION.map((edu, idx) => (
                 <ScrollReveal key={edu.institution} delay={idx * 100}>
-                  <TiltCard className="p-5 rounded-2xl bg-[#0c0e12] border border-zinc-800 shadow-md space-y-3">
-                    <div className="flex items-start justify-between gap-2 border-b border-zinc-800/80 pb-3">
+                  <TiltCard className="p-5 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 hover:border-white/30 shadow-md space-y-3 transition-all duration-300">
+                    <div className="flex items-start justify-between gap-2 border-b border-white/10 pb-3">
                       <div className="flex items-start gap-2.5">
-                        <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-blue-400 mt-0.5">
+                        <div className="p-2 rounded-lg bg-white/10 border border-white/15 text-white mt-0.5">
                           <GraduationCap className="w-4 h-4" />
                         </div>
                         <div>
-                          <h3 className="text-sm font-bold font-display text-white">
+                          <h3 className="text-sm font-black font-display text-white">
                             {edu.institution}
                           </h3>
                           <p className="text-[11px] text-zinc-400">
@@ -169,13 +170,13 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
                         </div>
                       </div>
 
-                      <span className="text-[11px] font-mono text-zinc-400 bg-zinc-950 px-2 py-0.5 rounded-md border border-zinc-800 tabular-nums shrink-0">
+                      <span className="text-[11px] font-mono text-zinc-300 bg-white/10 px-2 py-0.5 rounded-md border border-white/10 tabular-nums shrink-0">
                         {edu.period}
                       </span>
                     </div>
 
                     <div>
-                      <p className="text-xs font-semibold text-blue-400 font-mono">
+                      <p className="text-xs font-bold text-white font-mono">
                         {edu.degree}
                       </p>
                       <p className="text-xs text-zinc-300 leading-relaxed mt-1">
@@ -189,11 +190,11 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
 
             {/* Languages Card */}
             <ScrollReveal delay={200}>
-              <div className="p-5 rounded-2xl bg-[#0c0e12] border border-zinc-800 shadow-md space-y-4">
-                <div className="flex items-center gap-2 pb-3 border-b border-zinc-800/80">
-                  <Globe className="w-4 h-4 text-blue-400" />
-                  <h3 className="text-sm font-bold text-white font-display">
-                    Language Fluency &amp; Communication
+              <div className="p-5 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 shadow-md space-y-4">
+                <div className="flex items-center gap-2 pb-3 border-b border-white/10">
+                  <Globe className="w-4 h-4 text-white" />
+                  <h3 className="text-sm font-black text-white font-display">
+                    Language Fluency
                   </h3>
                 </div>
 
@@ -201,14 +202,14 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
                   {MY_LANGUAGES.map((lang) => (
                     <div key={lang.language} className="space-y-1.5">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="font-semibold text-zinc-200">{lang.language}</span>
+                        <span className="font-bold text-white">{lang.language}</span>
                         <span className="text-zinc-400 font-mono text-[11px]">
                           {lang.proficiency}
                         </span>
                       </div>
-                      <div className="h-1.5 w-full bg-zinc-950 rounded-full overflow-hidden border border-zinc-800">
+                      <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden border border-white/10">
                         <div
-                          className="h-full rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-500"
+                          className="h-full rounded-full bg-white transition-all duration-500"
                           style={{ width: `${lang.level}%` }}
                         />
                       </div>
@@ -222,20 +223,20 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
 
           {/* Right Column: Technical & Creative Toolkit */}
           <div className="lg:col-span-7 space-y-4">
-            <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block font-mono">
+            <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest block font-mono">
               Technical Arsenal &amp; Capabilities:
             </span>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {MY_SKILLS_CATEGORIES.map((cat, idx) => (
                 <ScrollReveal key={cat.category} delay={idx * 80}>
-                  <TiltCard className="p-5 rounded-2xl bg-[#0c0e12] border border-zinc-800 shadow-md space-y-3.5 h-full flex flex-col justify-between">
+                  <TiltCard className="p-5 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 hover:border-white/30 shadow-md space-y-3.5 h-full flex flex-col justify-between transition-all duration-300">
                     <div>
-                      <div className="flex items-center gap-2.5 pb-2.5 border-b border-zinc-800/80">
-                        <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
+                      <div className="flex items-center gap-2.5 pb-2.5 border-b border-white/10">
+                        <div className="p-2 rounded-lg bg-white/10 border border-white/15">
                           {getToolkitIcon(cat.category)}
                         </div>
-                        <h3 className="text-xs font-bold font-display text-white">
+                        <h3 className="text-xs font-black font-display text-white">
                           {cat.category}
                         </h3>
                       </div>
@@ -244,7 +245,7 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
                         {cat.items.map((item) => (
                           <span
                             key={item}
-                            className="px-2.5 py-1 rounded-md bg-zinc-950 border border-zinc-800 text-[11px] font-mono text-zinc-300"
+                            className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[11px] font-mono text-zinc-300 hover:border-white/30 hover:text-white transition-colors"
                           >
                             {item}
                           </span>
@@ -258,13 +259,13 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
 
             {/* Disciplined Methodology Callout */}
             <ScrollReveal delay={250}>
-              <div className="p-5 rounded-2xl bg-zinc-950/90 border border-zinc-800/90 text-xs text-zinc-400 leading-relaxed flex items-start gap-3">
-                <UserCheck className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
+              <div className="p-5 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 text-xs text-zinc-300 leading-relaxed flex items-start gap-3">
+                <UserCheck className="w-5 h-5 text-white shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-semibold text-zinc-200 block mb-0.5">
-                    Engineering Principles &amp; Delivery Standards
+                  <span className="font-bold text-white block mb-0.5">
+                    Engineering Standards &amp; Principles
                   </span>
-                  Strict commitment to clean code semantics, WCAG accessibility benchmarks, modular design tokens, and data-driven usability testing across all studio outputs.
+                  Strict commitment to clean code semantics, WCAG accessibility benchmarks, modular design tokens, and data-driven usability testing across all outputs.
                 </div>
               </div>
             </ScrollReveal>

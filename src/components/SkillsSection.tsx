@@ -247,161 +247,98 @@ interface SkillsSectionProps {
 }
 
 export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigateToTab }) => {
-  const [subView, setSubView] = React.useState<'toolkit' | 'process' | 'ventures'>('toolkit');
-
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'Frontend Web Engineering':
-        return <Cpu className="w-5 h-5 text-blue-400" />;
+        return <Cpu className="w-5 h-5 text-white" />;
       case 'Product Design & Prototyping':
-        return <Workflow className="w-5 h-5 text-indigo-400" />;
+        return <Workflow className="w-5 h-5 text-zinc-300" />;
       case 'Venture Management & GTM':
-        return <Rocket className="w-5 h-5 text-emerald-400" />;
+        return <Rocket className="w-5 h-5 text-white" />;
       case 'Creative Video & Visual Media':
-        return <Sparkles className="w-5 h-5 text-pink-400" />;
+        return <Sparkles className="w-5 h-5 text-zinc-300" />;
       default:
-        return <Compass className="w-5 h-5 text-zinc-300" />;
+        return <Compass className="w-5 h-5 text-zinc-400" />;
     }
   };
 
   return (
-    <section id="skills" className="py-20 sm:py-28 relative border-b border-zinc-800/70 bg-[#08090d]/80">
+    <section id="skills" className="py-20 sm:py-28 relative border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
         
         {/* Section Header */}
         <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-400 font-mono mb-2">
-              <span>05. Technical Capabilities</span>
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-300 font-mono mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-white shadow-sm shadow-white/60"></span>
+              <span>Technical Capabilities</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-display tracking-tight text-white leading-tight">
-              Skills &amp; Toolkit
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white leading-tight">
+              Skills &amp; <span className="silver-text">Toolkit</span><span className="text-white">.</span>
             </h2>
-            <p className="mt-2 text-zinc-400 text-xs sm:text-sm leading-relaxed">
-              Technical stack, development methodology, and venture products engineered across web engineering, UI/UX prototyping, and media production.
+            <p className="mt-3 text-zinc-300 text-xs sm:text-sm leading-relaxed">
+              Core technologies, design frameworks, and operational disciplines engineered for high-performance digital products and ventures.
             </p>
-          </div>
-
-          {/* Sub-navigation pills */}
-          <div className="flex items-center gap-1.5 p-1.5 bg-zinc-950/80 rounded-xl border border-zinc-800 self-start md:self-auto shrink-0">
-            <button
-              type="button"
-              onClick={() => {
-                playTapSound(500, 0.03);
-                setSubView('toolkit');
-              }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                subView === 'toolkit'
-                  ? 'bg-zinc-800 text-white font-semibold border border-zinc-700/80 shadow-sm'
-                  : 'text-zinc-400 hover:text-white'
-              }`}
-            >
-              Technical Stack
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                playTapSound(500, 0.03);
-                setSubView('process');
-              }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                subView === 'process'
-                  ? 'bg-zinc-800 text-white font-semibold border border-zinc-700/80 shadow-sm'
-                  : 'text-zinc-400 hover:text-white'
-              }`}
-            >
-              Our Process
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                playTapSound(500, 0.03);
-                setSubView('ventures');
-              }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
-                subView === 'ventures'
-                  ? 'bg-zinc-800 text-white font-semibold border border-zinc-700/80 shadow-sm'
-                  : 'text-zinc-400 hover:text-white'
-              }`}
-            >
-              ITS Ventures
-            </button>
           </div>
         </ScrollReveal>
 
-        {/* Sub-view 1: Technical Stack & Toolkit */}
-        {subView === 'toolkit' && (
-          <div className="space-y-10 animate-in fade-in duration-300">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {MY_SKILLS_CATEGORIES.map((cat, idx) => (
-                <ScrollReveal key={cat.category} delay={idx * 80}>
-                  <TiltCard className="h-full">
-                    <div className="p-6 rounded-2xl bg-[#0c0e12] border border-zinc-800 hover:border-zinc-700/80 shadow-xl h-full space-y-5">
-                      <div className="flex items-center gap-3 pb-3 border-b border-zinc-800/80">
-                        <div className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800">
-                          {getCategoryIcon(cat.category)}
-                        </div>
-                        <div>
-                          <h3 className="text-base font-bold font-display text-white">
-                            {cat.category}
-                          </h3>
-                          <span className="text-[11px] font-mono text-zinc-500">
-                            {cat.items.length} Core Competencies
-                          </span>
-                        </div>
+        {/* Streamlined Skills Grid - Transparent Glassmorphic Cards */}
+        <div className="space-y-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {MY_SKILLS_CATEGORIES.map((cat, idx) => (
+              <ScrollReveal key={cat.category} delay={idx * 80}>
+                <TiltCard className="h-full">
+                  <div className="p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 hover:border-white/30 shadow-xl h-full space-y-5 transition-all duration-300">
+                    <div className="flex items-center gap-3 pb-3 border-b border-white/10">
+                      <div className="p-2.5 rounded-xl bg-white/10 border border-white/15">
+                        {getCategoryIcon(cat.category)}
                       </div>
-
-                      <div className="flex flex-wrap gap-2">
-                        {cat.items.map((item) => (
-                          <span
-                            key={item}
-                            className="px-3 py-1.5 rounded-lg bg-zinc-950 border border-zinc-800/90 text-xs font-mono text-zinc-300 hover:border-blue-500/50 hover:text-white transition-colors"
-                          >
-                            {item}
-                          </span>
-                        ))}
+                      <div>
+                        <h3 className="text-base font-bold font-display text-white">
+                          {cat.category}
+                        </h3>
+                        <span className="text-[11px] font-mono text-zinc-400">
+                          {cat.items.length} Core Competencies
+                        </span>
                       </div>
                     </div>
-                  </TiltCard>
-                </ScrollReveal>
-              ))}
+
+                    <div className="flex flex-wrap gap-2">
+                      {cat.items.map((item) => (
+                        <span
+                          key={item}
+                          className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-zinc-300 hover:border-white/30 hover:text-white transition-colors"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </TiltCard>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Quick summary banner with CTA */}
+          <ScrollReveal className="p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1 text-xs">
+              <p className="font-bold text-white text-sm">Full-Stack Digital Execution Capabilities</p>
+              <p className="text-zinc-400">Available for web app development contracts, rapid design prototyping sprints, and venture advisory.</p>
             </div>
-
-            {/* Quick summary banner with CTA */}
-            <ScrollReveal className="p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800/90 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="space-y-1 text-xs">
-                <p className="font-semibold text-white">Full-Stack Digital Execution Capabilities</p>
-                <p className="text-zinc-400">Available for web app development contracts, design prototyping sprints, and startup advisory.</p>
-              </div>
-              {onNavigateToTab && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    playTapSound(500, 0.03);
-                    onNavigateToTab('connect');
-                  }}
-                  className="px-4 py-2 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-bold text-xs transition-all shadow-sm cursor-pointer whitespace-nowrap self-start sm:self-auto"
-                >
-                  Discuss a Project
-                </button>
-              )}
-            </ScrollReveal>
-          </div>
-        )}
-
-        {/* Sub-view 2: Our 4-Step Process */}
-        {subView === 'process' && (
-          <div className="animate-in fade-in duration-300">
-            <ProcessSection onNavigateToTab={onNavigateToTab} />
-          </div>
-        )}
-
-        {/* Sub-view 3: Ventures & Products */}
-        {subView === 'ventures' && (
-          <div className="animate-in fade-in duration-300">
-            <VenturesSection onNavigateToTab={onNavigateToTab} />
-          </div>
-        )}
+            {onNavigateToTab && (
+              <button
+                type="button"
+                onClick={() => {
+                  playTapSound(500, 0.03);
+                  onNavigateToTab('connect');
+                }}
+                className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white font-extrabold text-xs transition-all shadow-sm cursor-pointer whitespace-nowrap self-start sm:self-auto"
+              >
+                Discuss a Project
+              </button>
+            )}
+          </ScrollReveal>
+        </div>
 
       </div>
     </section>

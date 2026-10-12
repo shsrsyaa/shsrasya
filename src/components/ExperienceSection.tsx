@@ -29,13 +29,13 @@ export const ExperienceSection: React.FC = () => {
   const getOrgIcon = (orgId: string) => {
     switch (orgId) {
       case 'banjar-youth':
-        return <Users className="w-5 h-5 text-blue-400" />;
+        return <Users className="w-5 h-5 text-white" />;
       case 'owl-fest':
-        return <Shield className="w-5 h-5 text-indigo-400" />;
+        return <Shield className="w-5 h-5 text-zinc-300" />;
       case 'ceketer':
-        return <Calendar className="w-5 h-5 text-emerald-400" />;
+        return <Calendar className="w-5 h-5 text-white" />;
       default:
-        return <Layers className="w-5 h-5 text-zinc-300" />;
+        return <Layers className="w-5 h-5 text-zinc-400" />;
     }
   };
 
@@ -50,23 +50,24 @@ export const ExperienceSection: React.FC = () => {
   };
 
   return (
-    <section id="experience" className="py-20 sm:py-28 relative border-b border-zinc-800/70 bg-[#08090d]/80">
+    <section id="experience" className="py-20 sm:py-28 relative border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
         <ScrollReveal className="max-w-2xl mb-10">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-400 font-mono mb-2">
-            <span>04. Track Record &amp; Leadership</span>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-300 font-mono mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-white shadow-sm shadow-white/60"></span>
+            <span>Track Record &amp; Leadership</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-display tracking-tight text-white leading-tight">
-            Experience &amp; Leadership
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white leading-tight">
+            Experience &amp; <span className="silver-text">Leadership</span><span className="text-white">.</span>
           </h2>
-          <p className="mt-3 text-zinc-400 text-xs sm:text-sm leading-relaxed">
+          <p className="mt-3 text-zinc-300 text-xs sm:text-sm leading-relaxed">
             Real organizational and logistical command deployments across high-density campus festivals, community leadership, and traditional resource logistics.
           </p>
         </ScrollReveal>
 
-        {/* Filter Tabs (Functional interactive button bar) */}
+        {/* Filter Tabs - Transparent Buttons */}
         <div className="flex flex-wrap items-center gap-2 mb-10">
           {filters.map((filter) => (
             <button
@@ -76,10 +77,10 @@ export const ExperienceSection: React.FC = () => {
                 playTapSound(500, 0.02);
                 setSelectedFilter(filter);
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 backdrop-blur-md ${
                 selectedFilter === filter
-                  ? 'bg-white text-zinc-950 font-semibold shadow-sm'
-                  : 'bg-zinc-900/90 text-zinc-400 hover:text-white border border-zinc-800 hover:border-zinc-700'
+                  ? 'bg-white/20 text-white font-black shadow-sm border border-white/30'
+                  : 'bg-white/5 text-zinc-300 hover:text-white border border-white/10 hover:bg-white/15'
               }`}
             >
               {filter === 'All' ? 'All Case Studies' : filter}
@@ -87,22 +88,22 @@ export const ExperienceSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Case Studies Grid */}
+        {/* Case Studies Grid - Transparent Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-7 items-stretch">
           {filteredStudies.map((study, idx) => (
             <ScrollReveal key={study.id} delay={idx * 100} className="h-full flex">
               <TiltCard className="w-full h-full flex flex-col">
-                <div className="p-6 rounded-2xl bg-[#0c0e12] border border-zinc-800 hover:border-zinc-700 shadow-xl flex flex-col justify-between h-full space-y-6">
+                <div className="p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 hover:border-white/30 shadow-xl flex flex-col justify-between h-full space-y-6 transition-all duration-300">
                   
                   {/* Top info */}
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between pb-3 border-b border-zinc-800/80">
+                    <div className="flex items-center justify-between pb-3 border-b border-white/10">
                       <div className="flex items-center gap-2.5">
-                        <div className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800">
+                        <div className="p-2.5 rounded-xl bg-white/10 border border-white/15">
                           {getOrgIcon(study.id)}
                         </div>
                         <div>
-                          <h3 className="text-sm font-bold text-white font-display">
+                          <h3 className="text-sm font-black font-display text-white">
                             {study.organization}
                           </h3>
                           <p className="text-[11px] text-zinc-400">
@@ -110,23 +111,23 @@ export const ExperienceSection: React.FC = () => {
                           </p>
                         </div>
                       </div>
-                      <span className="text-xs font-mono font-semibold text-zinc-400 bg-zinc-950 px-2.5 py-1 rounded-md border border-zinc-800/80 tabular-nums">
+                      <span className="text-xs font-mono font-semibold text-zinc-300 bg-white/10 px-2.5 py-1 rounded-md border border-white/10 tabular-nums">
                         {study.period}
                       </span>
                     </div>
 
                     <div>
-                      <span className="text-[11px] font-mono text-blue-400 block mb-1">
+                      <span className="text-[11px] font-mono font-bold text-zinc-300 block mb-1">
                         {study.role}
                       </span>
-                      <h4 className="text-base font-bold text-white font-display leading-snug">
+                      <h4 className="text-base font-black font-display text-white leading-snug">
                         {study.title}
                       </h4>
                     </div>
 
                     {/* Problem */}
                     <div className="space-y-1">
-                      <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 block">
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 block font-mono">
                         Problem Statement:
                       </span>
                       <p className="text-xs text-zinc-300 leading-relaxed">
@@ -136,7 +137,7 @@ export const ExperienceSection: React.FC = () => {
 
                     {/* Solution */}
                     <div className="space-y-1">
-                      <span className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 block">
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 block font-mono">
                         Strategy &amp; Solution:
                       </span>
                       <p className="text-xs text-zinc-300 leading-relaxed">
@@ -146,15 +147,15 @@ export const ExperienceSection: React.FC = () => {
                   </div>
 
                   {/* Metrics & Action */}
-                  <div className="pt-4 border-t border-zinc-800/80 space-y-4">
+                  <div className="pt-4 border-t border-white/10 space-y-4">
                     {/* Quantified Metrics Row */}
-                    <div className="grid grid-cols-3 gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800/90 text-center">
+                    <div className="grid grid-cols-3 gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-center">
                       {study.metrics.map((m) => (
                         <div key={m.label} className="space-y-0.5">
-                          <p className="text-xs font-bold text-white font-mono tabular-nums">
+                          <p className="text-xs font-black text-white font-mono tabular-nums">
                             {m.value}
                           </p>
-                          <p className="text-[10px] text-zinc-500 leading-tight">
+                          <p className="text-[10px] text-zinc-400 leading-tight">
                             {m.label}
                           </p>
                         </div>
@@ -166,7 +167,7 @@ export const ExperienceSection: React.FC = () => {
                       {study.techStack.slice(0, 3).map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-0.5 rounded-md bg-zinc-900/80 border border-zinc-800 text-[10px] font-mono text-zinc-400"
+                          className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[10px] font-mono text-zinc-300"
                         >
                           {tech}
                         </span>
@@ -178,14 +179,14 @@ export const ExperienceSection: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Modal Button */}
+                    {/* Modal Button - Transparent */}
                     <button
                       type="button"
                       onClick={() => handleOpenModal(study as CaseStudy)}
-                      className="w-full py-2.5 px-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 hover:border-zinc-600 text-xs font-semibold text-zinc-200 hover:text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-98"
+                      className="w-full py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-xs font-bold text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-98 group"
                     >
                       <span>Read Full Case Study</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-blue-400" />
+                      <ArrowUpRight className="w-3.5 h-3.5 text-zinc-300 group-hover:text-white transition-colors" />
                     </button>
                   </div>
 
@@ -200,17 +201,17 @@ export const ExperienceSection: React.FC = () => {
       {/* Interactive Case Study Modal */}
       {activeModalStudy && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
           onClick={handleCloseModal}
         >
           <div 
-            className="w-full max-w-2xl bg-[#0d0f14] border border-zinc-700 rounded-2xl shadow-2xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto"
+            className="w-full max-w-2xl bg-[#080808]/95 border border-white/20 backdrop-blur-2xl rounded-2xl shadow-2xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-start justify-between gap-4 pb-4 border-b border-zinc-800">
+            <div className="flex items-start justify-between gap-4 pb-4 border-b border-white/10">
               <div className="space-y-1">
-                <div className="flex items-center gap-2 text-xs text-blue-400 font-mono">
+                <div className="flex items-center gap-2 text-xs text-zinc-300 font-mono">
                   <span>{activeModalStudy.category}</span>
                   <span aria-hidden="true">·</span>
                   <span>{activeModalStudy.period}</span>

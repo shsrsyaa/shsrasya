@@ -60,13 +60,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#060709]/90 backdrop-blur-xl border-b border-zinc-800 shadow-xl shadow-black/50'
-          : 'bg-[#060709]/60 backdrop-blur-md border-b border-zinc-800/50'
+          ? 'bg-[#050505]/75 backdrop-blur-xl border-b border-white/10 shadow-xl shadow-black/80'
+          : 'bg-[#050505]/45 backdrop-blur-md border-b border-white/10'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between gap-6">
         
-        {/* Zone 1: Wordmark Brand Title (Strictly 1 clean text element) */}
+        {/* Zone 1: Wordmark Brand Title */}
         <a 
           href="/about.html"
           onClick={(e) => {
@@ -74,16 +74,15 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
             playTapSound(480, 0.03);
             handleTabClick('about');
           }}
-          className="text-base sm:text-lg font-bold font-display tracking-tight text-white whitespace-nowrap shrink-0 hover:text-zinc-200 transition-colors flex items-center gap-2"
+          className="text-base sm:text-lg font-black font-display tracking-tight text-white whitespace-nowrap shrink-0 hover:text-zinc-300 transition-colors flex items-center gap-2 group"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-sm shadow-blue-500/50"></span>
-          <span>Sahasrasya Studio</span>
+          <span className="w-2.5 h-2.5 rounded-full bg-white shadow-sm shadow-white/70 group-hover:scale-125 transition-transform"></span>
+          <span>Sahasrasya<span className="silver-text">.</span></span>
         </a>
 
-        {/* Zone 2: 6 Structured Active Tabs with lucide-react icons & real HTML links */}
-        <nav className="hidden lg:flex items-center gap-1 bg-zinc-950/70 p-1.5 rounded-xl border border-zinc-800/80">
+        {/* Zone 2: 6 Structured Active Tabs - Transparent with NO SVG ICONS */}
+        <nav className="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-md p-1 rounded-xl border border-white/15">
           {NAV_TABS.map((tab) => {
-            const Icon = tab.icon;
             const isActive = activeTab === tab.id;
             return (
               <a
@@ -93,29 +92,28 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
                   e.preventDefault();
                   handleTabClick(tab.id);
                 }}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer whitespace-nowrap shrink-0 ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   isActive
-                    ? 'bg-zinc-800 text-white shadow-sm border border-zinc-700/80 font-semibold'
-                    : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/60'
+                    ? 'bg-white/20 text-white shadow-sm border border-white/30 backdrop-blur-sm'
+                    : 'text-zinc-300 hover:text-white hover:bg-white/10'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-blue-400' : 'text-zinc-500'}`} />
                 <span>{tab.label}</span>
               </a>
             );
           })}
         </nav>
 
-        {/* Zone 3: 1 Primary Action (Credentials / CV) & Mobile Toggle */}
+        {/* Zone 3: 1 Primary Action (Credentials / CV) & Mobile Toggle - Transparent Buttons */}
         <div className="flex items-center gap-2.5 shrink-0">
           <button
             onClick={() => {
               playTapSound(550, 0.04);
               onOpenResume();
             }}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-200 rounded-lg transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md rounded-lg transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap shrink-0 group"
           >
-            <FileText className="w-3.5 h-3.5 text-blue-600" />
+            <FileText className="w-3.5 h-3.5 text-white" />
             <span>CV &amp; Dossier</span>
           </button>
 
@@ -125,24 +123,23 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
               playTapSound(500, 0.03);
               setMobileMenuOpen(!mobileMenuOpen);
             }}
-            className="lg:hidden p-2 text-zinc-300 hover:text-white bg-zinc-900 border border-zinc-800 rounded-lg cursor-pointer"
+            className="lg:hidden p-2 text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md rounded-lg cursor-pointer"
             aria-label="Toggle Navigation Menu"
           >
-            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            {mobileMenuOpen ? <X className="w-4 h-4 text-white" /> : <Menu className="w-4 h-4 text-white" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0a0c10]/98 backdrop-blur-2xl border-b border-zinc-800 px-5 py-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200 shadow-2xl">
-          <div className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider px-2">
-            Navigation Menu (HTML Pages)
+        <div className="lg:hidden bg-[#080808]/85 backdrop-blur-2xl border-b border-white/15 px-5 py-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200 shadow-2xl">
+          <div className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest px-2 font-mono">
+            Navigation Menu
           </div>
           
           <div className="flex flex-col space-y-1">
             {NAV_TABS.map((tab) => {
-              const Icon = tab.icon;
               const isActive = activeTab === tab.id;
               return (
                 <a
@@ -152,42 +149,39 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
                     e.preventDefault();
                     handleTabClick(tab.id);
                   }}
-                  className={`flex items-center justify-between w-full px-3.5 py-2.5 rounded-xl text-xs font-medium transition-colors text-left cursor-pointer ${
+                  className={`flex items-center justify-between w-full px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left cursor-pointer ${
                     isActive
-                      ? 'bg-zinc-800 text-white font-semibold border border-zinc-700/80'
-                      : 'text-zinc-300 hover:bg-zinc-900 hover:text-white'
+                      ? 'bg-white/20 text-white border border-white/30 backdrop-blur-sm'
+                      : 'text-zinc-300 hover:bg-white/10 hover:text-white'
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <Icon className={`w-4 h-4 ${isActive ? 'text-blue-400' : 'text-zinc-400'}`} />
-                    <span>{tab.label}</span>
-                  </div>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-blue-400"></span>}
+                  <span>{tab.label}</span>
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-white"></span>}
                 </a>
               );
             })}
           </div>
 
-          <div className="pt-3 border-t border-zinc-800/80 flex flex-col gap-2">
+          <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
             <a
               href={MY_PROFILE.socials.instagram}
               target="_blank"
               rel="noreferrer"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-2 text-xs font-medium text-zinc-200 bg-zinc-900 rounded-xl border border-zinc-800 hover:bg-zinc-800 transition-colors"
+              className="w-full flex items-center justify-center gap-2 py-2 text-xs font-semibold text-white bg-white/5 rounded-xl border border-white/15 hover:bg-white/15 transition-all"
             >
-              <Instagram className="w-3.5 h-3.5 text-pink-400" />
+              <Instagram className="w-3.5 h-3.5 text-white" />
               <span>Instagram: @shsrsyaa</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-500" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
             </a>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenResume();
               }}
-              className="w-full flex items-center justify-center gap-2 py-2 text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-200 rounded-xl cursor-pointer transition-colors"
+              className="w-full flex items-center justify-center gap-2 py-2 text-xs font-bold text-white bg-white/15 hover:bg-white/25 border border-white/20 backdrop-blur-md rounded-xl cursor-pointer transition-all"
             >
-              <FileText className="w-3.5 h-3.5 text-blue-600" />
+              <FileText className="w-3.5 h-3.5 text-white" />
               <span>View Full CV &amp; Dossier</span>
             </button>
           </div>

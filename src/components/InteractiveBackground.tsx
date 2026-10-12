@@ -63,10 +63,10 @@ export const InteractiveBackground: React.FC = () => {
     const particles: Particle[] = [];
 
     const colors = [
-      'rgba(56, 189, 248, ',  // Soft ITS blue
-      'rgba(147, 197, 253, ', // Ice cyan
-      'rgba(167, 139, 250, ', // Subtle lavender
-      'rgba(255, 255, 255, '  // Pure starlight
+      'rgba(239, 68, 68, ',   // Crimson / Scarlet red
+      'rgba(248, 113, 113, ', // Soft red
+      'rgba(228, 228, 231, ', // Silver chrome
+      'rgba(255, 255, 255, '  // Crisp starlight white
     ];
 
     for (let i = 0; i < particleCount; i++) {
@@ -98,8 +98,8 @@ export const InteractiveBackground: React.FC = () => {
           const dy = particles[i].y - particles[j].y;
           const distSq = dx * dx + dy * dy;
           if (distSq < 7200) { // ~85px distance
-            const alpha = (1 - Math.sqrt(distSq) / 85) * 0.06;
-            ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+            const alpha = (1 - Math.sqrt(distSq) / 85) * 0.12;
+            ctx.strokeStyle = `rgba(239, 68, 68, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -148,9 +148,9 @@ export const InteractiveBackground: React.FC = () => {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#060709]"
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#060203]"
     >
-      {/* 1. Clear Campus Landmark with Slow Cinematic Drift */}
+      {/* 1. Clear Campus Landmark with Slow Cinematic Drift and subtle red grading */}
       <div
         ref={bgImageRef}
         className="absolute -inset-10 w-[calc(100%+80px)] h-[calc(100%+80px)] transition-transform duration-1000 ease-out will-change-transform"
@@ -159,43 +159,59 @@ export const InteractiveBackground: React.FC = () => {
           src={itsCampusBg}
           alt="Institut Teknologi Sepuluh Nopember Campus Backdrop"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-[center_30%] filter blur-[3px] md:blur-[4px] brightness-[0.52] saturate-[1.15] contrast-[1.08]"
+          className="w-full h-full object-cover object-[center_30%] filter blur-[3px] md:blur-[4px] brightness-[0.40] saturate-[1.1] contrast-[1.15]"
         />
       </div>
 
-      {/* 2. Top-to-Bottom Shadow Vignette */}
+      {/* 2. Red Crimson Atmospheric Tint Overlay */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(135deg, rgba(153, 27, 27, 0.28) 0%, rgba(69, 10, 10, 0.42) 50%, rgba(5, 5, 5, 0.75) 100%)'
+        }}
+      />
+
+      {/* 3. Top-to-Bottom Shadow Vignette with Red Warmth */}
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, rgba(6, 7, 9, 0.75) 0%, rgba(6, 7, 9, 0.28) 22%, rgba(6, 7, 9, 0.38) 55%, rgba(6, 7, 9, 0.88) 85%, #060709 100%)'
+          background: 'linear-gradient(180deg, rgba(5, 5, 5, 0.75) 0%, rgba(127, 29, 29, 0.22) 30%, rgba(5, 5, 5, 0.5) 60%, rgba(5, 5, 5, 0.92) 90%, #050505 100%)'
         }}
       />
 
-      {/* 3. Radial Shadow Vignette for Smooth Focus */}
+      {/* 4. Radial Red Spotlight Vignette */}
       <div
         className="absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse 90% 80% at 50% 35%, transparent 25%, rgba(6, 7, 9, 0.55) 70%, #060709 100%)'
+          background: 'radial-gradient(ellipse 85% 75% at 50% 30%, rgba(220, 38, 38, 0.25) 0%, rgba(153, 27, 27, 0.18) 40%, rgba(5, 5, 5, 0.7) 75%, #050505 100%)'
         }}
       />
 
-      {/* 4. Slow Breathing Celestial Ambient Aura (Enhancement Effect) */}
+      {/* 5. Breathing Crimson Ambient Aura */}
       <div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[550px] rounded-full pointer-events-none opacity-40 blur-[130px]"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[650px] rounded-full pointer-events-none opacity-60 blur-[130px]"
         style={{
-          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(239, 68, 68, 0.35) 0%, rgba(185, 28, 28, 0.2) 40%, transparent 70%)'
         }}
       />
 
-      {/* 5. Ambient Slow-Floating Bubbles & Starlight Canvas */}
+      {/* 6. Lower Deep Crimson Ground Glow */}
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[450px] pointer-events-none opacity-40 blur-[140px]"
+        style={{
+          background: 'radial-gradient(ellipse at 50% 100%, rgba(220, 38, 38, 0.4) 0%, transparent 65%)'
+        }}
+      />
+
+      {/* 7. Ambient Slow-Floating Crimson & White Bubbles Canvas */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none opacity-90"
       />
 
-      {/* 6. Subtle Modern Fine Grid Texture */}
+      {/* 8. Subtle Modern Fine Grid Texture */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 pointer-events-none opacity-[0.035]"
         style={{
           backgroundImage: `linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)`,
           backgroundSize: '40px 40px'

@@ -48,24 +48,24 @@ export const TouchEffects: React.FC = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-30 overflow-hidden">
-      {/* Subtle silver/ice-blue ambient aura following touch or pointer */}
+      {/* Subtle silver/red ambient aura following touch or pointer */}
       {isActive && (
         <div
           className="absolute w-80 h-80 rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out"
           style={{
             left: `${pointerPos.x}px`,
             top: `${pointerPos.y}px`,
-            background: 'radial-gradient(circle, rgba(228, 228, 231, 0.05) 0%, rgba(96, 165, 250, 0.03) 40%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(228, 228, 231, 0.06) 0%, rgba(239, 68, 68, 0.04) 40%, transparent 70%)',
             filter: 'blur(35px)'
           }}
         />
       )}
 
-      {/* Ripple wave on tap/touch in silver/subtle blue */}
+      {/* Ripple wave on tap/touch in silver & red */}
       {ripples.map((ripple) => (
         <span
           key={ripple.id}
-          className="absolute rounded-full border border-zinc-400/30 -translate-x-1/2 -translate-y-1/2 animate-ping"
+          className="absolute rounded-full border border-red-500/40 -translate-x-1/2 -translate-y-1/2 animate-ping"
           style={{
             left: `${ripple.x}px`,
             top: `${ripple.y}px`,
