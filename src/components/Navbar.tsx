@@ -23,15 +23,6 @@ export interface TabItem {
   href: string;
 }
 
-export const NAV_TABS: TabItem[] = [
-  { id: 'about', label: 'About / Hero', shortLabel: 'About', icon: Sparkles, href: '/about.html' },
-  { id: 'focus', label: 'Focus & Expertise', shortLabel: 'Focus', icon: Briefcase, href: '/focus.html' },
-  { id: 'education', label: 'Education & Languages', shortLabel: 'Education', icon: GraduationCap, href: '/education.html' },
-  { id: 'experience', label: 'Experience & Leadership', shortLabel: 'Experience', icon: FolderKanban, href: '/experience.html' },
-  { id: 'skills', label: 'Skills & Toolkit', shortLabel: 'Skills', icon: Wrench, href: '/skills.html' },
-  { id: 'connect', label: 'Connect', shortLabel: 'Connect', icon: Send, href: '/connect.html' }
-];
-
 interface NavbarProps {
   activeTab: string;
   onTabChange: (tabId: string) => void;
@@ -182,7 +173,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
               className="w-full flex items-center justify-center gap-2 py-2 text-xs font-bold text-white bg-white/15 hover:bg-white/25 border border-white/20 backdrop-blur-md rounded-xl cursor-pointer transition-all"
             >
               <FileText className="w-3.5 h-3.5 text-white" />
-              <span>View Full CV &amp; Dossier</span>
+              <span>View Full CV</span>
             </button>
           </div>
         </div>
