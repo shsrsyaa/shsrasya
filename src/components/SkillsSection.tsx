@@ -322,7 +322,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigateToTab })
           {/* Quick summary banner with CTA */}
           <ScrollReveal className="p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1 text-xs">
-              <p className="font-bold text-white text-sm">Full-Stack Digital Execution Capabilities</p>
+              <p className="font-bold text-white text-sm">Full Stack Digital Execution Capabilities</p>
               <p className="text-zinc-400">Available for web app development contracts, rapid design prototyping sprints, and venture advisory.</p>
             </div>
             {onNavigateToTab && (
