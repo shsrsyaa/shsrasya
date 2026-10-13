@@ -35,7 +35,7 @@ export const EducationSection: React.FC<ProfileSectionProps> = ({ onOpenResume }
         return <Code className="w-4 h-4 text-white" />;
       case 'Product Design & Prototyping':
         return <Layers className="w-4 h-4 text-zinc-300" />;
-      case 'Venture Management & GTM':
+      case 'Venture Management':
         return <CheckCircle2 className="w-4 h-4 text-white" />;
       case 'Creative Video & Visual Media':
         return <Video className="w-4 h-4 text-zinc-300" />;
