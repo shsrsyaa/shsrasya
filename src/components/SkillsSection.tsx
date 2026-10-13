@@ -31,7 +31,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onNavigateToTab 
             Our 4-Step Venture Process
           </h1>
           <p className="mt-3 text-zinc-400 text-xs sm:text-sm leading-relaxed">
-            From initial stakeholder discovery to high-performance semantic code and go-to-market rollout. A structured, transparent pipeline for digital ventures.
+            From initial stakeholder discovery to high performance semantic code. A structured, transparent pipeline for digital ventures.
           </p>
         </ScrollReveal>
 
@@ -99,7 +99,7 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onNavigateToTab 
                 Ready to run this process for your venture?
               </h3>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                We apply this exact workflow to de-risk and engineer digital products within rapid 2 to 4-week milestones.
+                We apply this exact workflow to be an engineer digital products within rapid 2 to 4 week milestones.
               </p>
               <button
                 type="button"
@@ -277,7 +277,7 @@ export const SkillsSection: React.FC<SkillsSectionProps> = ({ onNavigateToTab })
               Skills &amp; <span className="silver-text">Toolkit</span><span className="text-white">.</span>
             </h2>
             <p className="mt-3 text-zinc-300 text-xs sm:text-sm leading-relaxed">
-              Core technologies, design frameworks, and operational disciplines engineered for high-performance digital products and ventures.
+              Core technologies, design frameworks, and operational disciplines engineered for high performance digital products and ventures.
             </p>
           </div>
         </ScrollReveal>
