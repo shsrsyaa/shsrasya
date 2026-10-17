@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-interface Ripple {
-  id: number;
-  x: number;
-  y: number;
-}
-
-export const TouchEffects: React.FC = () => {
+export const TouchEffects = () => {
   const [pointerPos, setPointerPos] = useState({ x: -200, y: -200 });
-  const [ripples, setRipples] = useState<Ripple[]>([]);
+  const [ripples, setRipples] = useState([]);
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     let nextId = 0;
 
-    const handlePointerMove = (e: PointerEvent) => {
+    const handlePointerMove = (e) => {
       setPointerPos({ x: e.clientX, y: e.clientY });
       setIsActive(true);
     };
 
-    const handlePointerDown = (e: PointerEvent) => {
-      const newRipple: Ripple = {
+    const handlePointerDown = (e) => {
+      const newRipple = {
         id: nextId++,
         x: e.clientX,
         y: e.clientY
@@ -48,14 +42,14 @@ export const TouchEffects: React.FC = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-30 overflow-hidden">
-      {/* Subtle silver/red ambient aura following touch or pointer */}
+      {/* Subtle silver/red ambient aura following pointer */}
       {isActive && (
         <div
           className="absolute w-80 h-80 rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-out"
           style={{
             left: `${pointerPos.x}px`,
             top: `${pointerPos.y}px`,
-            background: 'radial-gradient(circle, rgba(228, 228, 231, 0.06) 0%, rgba(239, 68, 68, 0.04) 40%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(228, 228, 231, 0.05) 0%, rgba(239, 68, 68, 0.03) 40%, transparent 70%)',
             filter: 'blur(35px)'
           }}
         />

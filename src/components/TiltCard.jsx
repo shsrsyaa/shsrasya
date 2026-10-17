@@ -1,19 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { playTapSound } from '../utils/sound';
 
-interface TiltCardProps {
-  children: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
-}
-
-export const TiltCard: React.FC<TiltCardProps> = ({ children, className = '', onClick }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
+export const TiltCard = ({ children, className = '', onClick }) => {
+  const cardRef = useRef(null);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
   const [glarePos, setGlarePos] = useState({ x: 50, y: 50, opacity: 0 });
 
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerMove = (e) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;

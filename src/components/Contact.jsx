@@ -7,20 +7,14 @@ import {
   Copy, 
   Check, 
   ArrowUpRight, 
-  Send,
-  MessageSquare,
-  Sparkles
+  Send 
 } from 'lucide-react';
 import { MY_PROFILE } from '../portfolioConfig';
 import { ScrollReveal } from './ScrollReveal';
 import { TiltCard } from './TiltCard';
 import { playTapSound } from '../utils/sound';
 
-interface ContactProps {
-  initialService?: string;
-}
-
-export const Contact: React.FC<ContactProps> = () => {
+export const Contact = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const handleCopyEmail = () => {
@@ -39,11 +33,10 @@ export const Contact: React.FC<ContactProps> = () => {
         
         {/* Header */}
         <ScrollReveal className="max-w-2xl">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-300 font-mono mb-2">
-            <span className="w-2 h-2 rounded-full bg-white shadow-sm shadow-white/60"></span>
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-400 mb-2">
             <span>Direct Engagement</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black font-display tracking-tight text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
             Connect &amp; <span className="silver-text">Initiate</span><span className="text-white">.</span>
           </h2>
           <p className="mt-3 text-zinc-300 text-xs sm:text-sm leading-relaxed">
@@ -65,20 +58,20 @@ export const Contact: React.FC<ContactProps> = () => {
                         <Mail className="w-5 h-5" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-black font-display text-white">
+                        <h3 className="text-sm font-extrabold font-display text-white">
                           Direct Email
                         </h3>
-                        <p className="text-[11px] text-zinc-400 font-mono">
+                        <p className="text-[11px] text-zinc-400">
                           Primary inbox
                         </p>
                       </div>
                     </div>
-                    <span className="text-[10px] font-mono text-zinc-400 uppercase font-bold px-2 py-0.5 rounded bg-white/10 border border-white/10">
+                    <span className="text-[10px] text-zinc-400 uppercase font-bold px-2 py-0.5 rounded bg-white/10 border border-white/10">
                       Verified
                     </span>
                   </div>
 
-                  <p className="text-xs text-white leading-relaxed font-mono font-bold break-all">
+                  <p className="text-xs text-white leading-relaxed font-bold break-all">
                     {MY_PROFILE.email}
                   </p>
                   <p className="text-zinc-400 text-xs leading-relaxed">
@@ -128,24 +121,24 @@ export const Contact: React.FC<ContactProps> = () => {
                         <Instagram className="w-5 h-5" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-black font-display text-white">
+                        <h3 className="text-sm font-extrabold font-display text-white">
                           Instagram Direct
                         </h3>
-                        <p className="text-[11px] text-zinc-400 font-mono">
+                        <p className="text-[11px] text-zinc-400">
                           @shsrsyaa
                         </p>
                       </div>
                     </div>
-                    <span className="text-[10px] font-mono text-zinc-400 uppercase font-bold px-2 py-0.5 rounded bg-white/10 border border-white/10">
+                    <span className="text-[10px] text-zinc-400 uppercase font-bold px-2 py-0.5 rounded bg-white/10 border border-white/10">
                       Active
                     </span>
                   </div>
 
-                  <p className="text-xs text-white leading-relaxed font-mono font-bold">
+                  <p className="text-xs text-white leading-relaxed font-bold">
                     Personal &amp; Creative Portfolio
                   </p>
                   <p className="text-zinc-400 text-xs leading-relaxed">
-                    Casual dialogues, creative media showcases, and rapid DMs regarding daily projects and ventures.
+                    Direct messages regarding design prototypes, creative media showcases, and venture collaborations.
                   </p>
                 </div>
 
@@ -177,24 +170,24 @@ export const Contact: React.FC<ContactProps> = () => {
                         <Linkedin className="w-5 h-5" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-black font-display text-white">
+                        <h3 className="text-sm font-extrabold font-display text-white">
                           LinkedIn Profile
                         </h3>
-                        <p className="text-[11px] text-zinc-400 font-mono">
+                        <p className="text-[11px] text-zinc-400">
                           Professional Network
                         </p>
                       </div>
                     </div>
-                    <span className="text-[10px] font-mono text-zinc-400 uppercase font-bold px-2 py-0.5 rounded bg-white/10 border border-white/10">
+                    <span className="text-[10px] text-zinc-400 uppercase font-bold px-2 py-0.5 rounded bg-white/10 border border-white/10">
                       Network
                     </span>
                   </div>
 
-                  <p className="text-xs text-white leading-relaxed font-mono font-bold">
+                  <p className="text-xs text-white leading-relaxed font-bold">
                     {MY_PROFILE.fullName}
                   </p>
                   <p className="text-zinc-400 text-xs leading-relaxed">
-                    Formal enterprise networking, academic milestones, and official recommendations.
+                    Formal enterprise networking, academic milestones, and engineering collaborations.
                   </p>
                 </div>
 
@@ -228,7 +221,7 @@ export const Contact: React.FC<ContactProps> = () => {
                 <div className="flex items-center gap-2 text-xs font-bold text-white">
                   <span>Base of Operations &amp; Study</span>
                   <span className="text-zinc-500">·</span>
-                  <span className="text-zinc-300 font-mono text-[11px] font-normal">Surabaya (ITS Sukolilo) / Bali</span>
+                  <span className="text-zinc-300 text-xs font-medium">Surabaya (ITS Sukolilo) / Bali</span>
                 </div>
                 <p className="text-xs text-zinc-400">
                   Institut Teknologi Sepuluh Nopember, Surabaya · Origin: Semarapura, Bali, Indonesia. Available for remote collaboration worldwide.
@@ -238,7 +231,7 @@ export const Contact: React.FC<ContactProps> = () => {
 
             <a
               href={`mailto:${MY_PROFILE.email}?subject=Collaboration%20Inquiry`}
-              className="px-6 py-3 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white backdrop-blur-md text-xs font-black transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap self-start sm:self-auto"
+              className="px-6 py-3 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 text-white backdrop-blur-md text-xs font-bold transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap self-start sm:self-auto"
             >
               <Send className="w-3.5 h-3.5 text-white" />
               <span>Send An Email</span>

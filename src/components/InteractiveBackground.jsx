@@ -1,19 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import itsCampusBg from '../assets/images/Institut Teknologi Sepuluh November.jpg';
 
-export const InteractiveBackground: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const bgImageRef = useRef<HTMLDivElement>(null);
+export const InteractiveBackground = () => {
+  const canvasRef = useRef(null);
+  const bgImageRef = useRef(null);
 
-  // 1. Slow, continuous, autonomous background drift (constant majestic motion, NOT tied to cursor jerking)
+  // Slow, continuous background drift
   useEffect(() => {
-    let animId: number;
+    let animId;
     let startTime = performance.now();
 
-    const animateDrift = (time: number) => {
+    const animateDrift = (time) => {
       const elapsed = time - startTime;
       
-      // Extremely slow, graceful organic pan and gentle breathing scale
       const panX = Math.sin(elapsed * 0.00012) * 12;
       const panY = Math.cos(elapsed * 0.00009) * 8;
       const scale = 1.05 + Math.sin(elapsed * 0.00007) * 0.015;
@@ -29,7 +28,7 @@ export const InteractiveBackground: React.FC = () => {
     return () => cancelAnimationFrame(animId);
   }, []);
 
-  // 2. Slow-floating ambient bubbles & gentle constellation particles
+  // Ambient constellation particles
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -46,27 +45,14 @@ export const InteractiveBackground: React.FC = () => {
     };
     window.addEventListener('resize', handleResize);
 
-    interface Particle {
-      x: number;
-      y: number;
-      baseX: number;
-      vy: number;
-      speedModifier: number;
-      size: number;
-      alpha: number;
-      pulseAngle: number;
-      color: string;
-      swayOffset: number;
-    }
-
     const particleCount = Math.min(38, Math.floor((width * height) / 38000));
-    const particles: Particle[] = [];
+    const particles = [];
 
     const colors = [
-      'rgba(239, 68, 68, ',   // Crimson / Scarlet red
-      'rgba(248, 113, 113, ', // Soft red
-      'rgba(228, 228, 231, ', // Silver chrome
-      'rgba(255, 255, 255, '  // Crisp starlight white
+      'rgba(239, 68, 68, ',
+      'rgba(248, 113, 113, ',
+      'rgba(228, 228, 231, ',
+      'rgba(255, 255, 255, '
     ];
 
     for (let i = 0; i < particleCount; i++) {
@@ -75,7 +61,7 @@ export const InteractiveBackground: React.FC = () => {
         x,
         baseX: x,
         y: Math.random() * height,
-        vy: -(Math.random() * 0.18 + 0.07), // Very slow, calm upward float
+        vy: -(Math.random() * 0.18 + 0.07),
         speedModifier: Math.random() * 0.4 + 0.8,
         size: Math.random() * 2.2 + 0.8,
         alpha: Math.random() * 0.35 + 0.15,
@@ -85,19 +71,18 @@ export const InteractiveBackground: React.FC = () => {
       });
     }
 
-    let particleAnimId: number;
+    let particleAnimId;
 
-    const render = (timestamp: number) => {
+    const render = (timestamp) => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw subtle constellation connections between close slow particles
       ctx.lineWidth = 0.6;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distSq = dx * dx + dy * dy;
-          if (distSq < 7200) { // ~85px distance
+          if (distSq < 7200) {
             const alpha = (1 - Math.sqrt(distSq) / 85) * 0.12;
             ctx.strokeStyle = `rgba(239, 68, 68, ${alpha})`;
             ctx.beginPath();
@@ -108,26 +93,21 @@ export const InteractiveBackground: React.FC = () => {
         }
       }
 
-      // Update and draw each bubble/particle
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        // Constant, ultra-slow floating motion (gentle sine wave sway)
         p.pulseAngle += 0.008;
         const currentAlpha = p.alpha + Math.sin(p.pulseAngle) * 0.08;
         
-        // Gentle horizontal sway
         p.x = p.baseX + Math.sin((timestamp * 0.0004) + p.swayOffset) * 16;
         p.y += p.vy * p.speedModifier;
 
-        // Wrap around smoothly
         if (p.y < -15) {
           p.y = height + 15;
           p.baseX = Math.random() * width;
           p.x = p.baseX;
         }
 
-        // Draw soft ambient particle glow
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = `${p.color}${Math.max(0.05, Math.min(0.7, currentAlpha))})`;
@@ -148,9 +128,9 @@ export const InteractiveBackground: React.FC = () => {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#060203]"
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#050505]"
     >
-      {/* 1. Clear Campus Landmark with Slow Cinematic Drift and subtle red grading */}
+      {/* 1. Campus Landmark with Slow Drift */}
       <div
         ref={bgImageRef}
         className="absolute -inset-10 w-[calc(100%+80px)] h-[calc(100%+80px)] transition-transform duration-1000 ease-out will-change-transform"
@@ -159,7 +139,7 @@ export const InteractiveBackground: React.FC = () => {
           src={itsCampusBg}
           alt="Institut Teknologi Sepuluh Nopember Campus Backdrop"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-[center_30%] filter blur-[3px] md:blur-[4px] brightness-[0.40] saturate-[1.1] contrast-[1.15]"
+          className="w-full h-full object-cover object-[center_30%] filter blur-[3px] md:blur-[4px] brightness-[0.38] saturate-[1.1] contrast-[1.15]"
         />
       </div>
 
@@ -167,7 +147,7 @@ export const InteractiveBackground: React.FC = () => {
       <div 
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(135deg, rgba(153, 27, 27, 0.28) 0%, rgba(69, 10, 10, 0.42) 50%, rgba(5, 5, 5, 0.75) 100%)'
+          background: 'linear-gradient(135deg, rgba(153, 27, 27, 0.25) 0%, rgba(69, 10, 10, 0.38) 50%, rgba(5, 5, 5, 0.8) 100%)'
         }}
       />
 
@@ -175,7 +155,7 @@ export const InteractiveBackground: React.FC = () => {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, rgba(5, 5, 5, 0.75) 0%, rgba(127, 29, 29, 0.22) 30%, rgba(5, 5, 5, 0.5) 60%, rgba(5, 5, 5, 0.92) 90%, #050505 100%)'
+          background: 'linear-gradient(180deg, rgba(5, 5, 5, 0.8) 0%, rgba(127, 29, 29, 0.20) 30%, rgba(5, 5, 5, 0.55) 60%, rgba(5, 5, 5, 0.95) 90%, #050505 100%)'
         }}
       />
 
@@ -183,35 +163,35 @@ export const InteractiveBackground: React.FC = () => {
       <div
         className="absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse 85% 75% at 50% 30%, rgba(220, 38, 38, 0.25) 0%, rgba(153, 27, 27, 0.18) 40%, rgba(5, 5, 5, 0.7) 75%, #050505 100%)'
+          background: 'radial-gradient(ellipse 85% 75% at 50% 30%, rgba(220, 38, 38, 0.22) 0%, rgba(153, 27, 27, 0.16) 40%, rgba(5, 5, 5, 0.75) 75%, #050505 100%)'
         }}
       />
 
       {/* 5. Breathing Crimson Ambient Aura */}
       <div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[650px] rounded-full pointer-events-none opacity-60 blur-[130px]"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[650px] rounded-full pointer-events-none opacity-50 blur-[130px]"
         style={{
-          background: 'radial-gradient(circle, rgba(239, 68, 68, 0.35) 0%, rgba(185, 28, 28, 0.2) 40%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(239, 68, 68, 0.3) 0%, rgba(185, 28, 28, 0.18) 40%, transparent 70%)'
         }}
       />
 
       {/* 6. Lower Deep Crimson Ground Glow */}
       <div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[450px] pointer-events-none opacity-40 blur-[140px]"
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[450px] pointer-events-none opacity-35 blur-[140px]"
         style={{
-          background: 'radial-gradient(ellipse at 50% 100%, rgba(220, 38, 38, 0.4) 0%, transparent 65%)'
+          background: 'radial-gradient(ellipse at 50% 100%, rgba(220, 38, 38, 0.35) 0%, transparent 65%)'
         }}
       />
 
       {/* 7. Ambient Slow-Floating Crimson & White Bubbles Canvas */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 pointer-events-none opacity-90"
+        className="absolute inset-0 pointer-events-none opacity-85"
       />
 
-      {/* 8. Subtle Modern Fine Grid Texture */}
+      {/* 8. Subtle Fine Grid Texture */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.035]"
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
           backgroundImage: `linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)`,
           backgroundSize: '40px 40px'

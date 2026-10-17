@@ -14,26 +14,21 @@ import { InteractiveBackground } from './components/InteractiveBackground';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { playTapSound } from './utils/sound';
 
-type TabId = 'about' | 'focus' | 'education' | 'experience' | 'skills' | 'connect';
+const VALID_TABS = ['about', 'focus', 'education', 'experience', 'skills', 'connect'];
 
-const VALID_TABS: TabId[] = ['about', 'focus', 'education', 'experience', 'skills', 'connect'];
-
-const getInitialTab = (): TabId => {
-  // 1. Check data-page on #root
+const getInitialTab = () => {
   if (typeof document !== 'undefined') {
     const rootEl = document.getElementById('root');
-    const dataPage = rootEl?.getAttribute('data-page') as TabId | null;
+    const dataPage = rootEl?.getAttribute('data-page');
     if (dataPage && VALID_TABS.includes(dataPage)) {
       return dataPage;
     }
 
-    // 2. Check meta tag
-    const metaPage = document.querySelector('meta[name="page-id"]')?.getAttribute('content') as TabId | null;
+    const metaPage = document.querySelector('meta[name="page-id"]')?.getAttribute('content');
     if (metaPage && VALID_TABS.includes(metaPage)) {
       return metaPage;
     }
 
-    // 3. Check pathname (e.g. /focus.html, /education.html, /about.html)
     const path = window.location.pathname.toLowerCase();
     for (const tab of VALID_TABS) {
       if (path.includes(tab)) {
@@ -41,8 +36,7 @@ const getInitialTab = (): TabId => {
       }
     }
 
-    // 4. Check hash
-    const hash = window.location.hash.replace('#', '') as TabId;
+    const hash = window.location.hash.replace('#', '');
     if (VALID_TABS.includes(hash)) {
       return hash;
     }
@@ -53,8 +47,8 @@ const getInitialTab = (): TabId => {
 
 export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState<TabId>(getInitialTab);
-  const [selectedServiceForInquiry, setSelectedServiceForInquiry] = useState<string>('Web App Development');
+  const [activeTab, setActiveTab] = useState(getInitialTab);
+  const [selectedServiceForInquiry, setSelectedServiceForInquiry] = useState('Web App Development');
 
   // Synchronize activeTab with URL pathname, popstate, and hash changes
   useEffect(() => {
@@ -71,15 +65,13 @@ export default function App() {
     };
   }, []);
 
-  const handleTabChange = (tabId: string) => {
-    const targetTab = tabId as TabId;
-    if (VALID_TABS.includes(targetTab)) {
-      setActiveTab(targetTab);
+  const handleTabChange = (tabId) => {
+    if (VALID_TABS.includes(tabId)) {
+      setActiveTab(tabId);
       
-      // Update browser URL to target HTML file seamlessly
-      const targetUrl = targetTab === 'about' ? '/about.html' : `/${targetTab}.html`;
+      const targetUrl = tabId === 'about' ? '/about.html' : `/${tabId}.html`;
       if (window.location.pathname !== targetUrl) {
-        window.history.pushState({ tab: targetTab }, '', targetUrl);
+        window.history.pushState({ tab: tabId }, '', targetUrl);
       }
       
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -91,38 +83,37 @@ export default function App() {
     }
   };
 
-  const handleSelectService = (serviceTitle: string) => {
+  const handleSelectService = (serviceTitle) => {
     setSelectedServiceForInquiry(serviceTitle);
     handleTabChange('connect');
   };
 
-  // Sequential pagination helpers between discrete HTML tab pages
   const currentTabIndex = VALID_TABS.indexOf(activeTab);
   const prevTab = currentTabIndex > 0 ? VALID_TABS[currentTabIndex - 1] : null;
   const nextTab = currentTabIndex < VALID_TABS.length - 1 ? VALID_TABS[currentTabIndex + 1] : null;
 
-  const getTabLabel = (id: TabId) => {
+  const getTabLabel = (id) => {
     const found = NAV_TABS.find((t) => t.id === id);
     return found ? found.label : id;
   };
 
-  const getTabHref = (id: TabId) => {
+  const getTabHref = (id) => {
     return id === 'about' ? '/about.html' : `/${id}.html`;
   };
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#e4e4e7] relative selection:bg-red-600/30 selection:text-white font-sans flex flex-col justify-between">
       
-      {/* Interactive ITS Campus Background with Cinematic Blur & Shadow Vignette */}
+      {/* Interactive ITS Campus Background */}
       <InteractiveBackground />
 
-      {/* Top & Bottom Progressive Frosted Scroll Blur Shields */}
+      {/* Progressive Frosted Scroll Blur Shields */}
       <ScrollBlurShield />
 
-      {/* Interactive Touch & Cursor Ripples in Silver & Subtle Red */}
+      {/* Interactive Touch & Cursor Ripple Effects */}
       <TouchEffects />
 
-      {/* Top Navigation with 6 Structured Active Tabs in Strict Layout Sequence */}
+      {/* Top Navigation */}
       <Navbar 
         activeTab={activeTab}
         onTabChange={handleTabChange}
@@ -132,13 +123,12 @@ export default function App() {
       {/* Main Content Area */}
       <main className="relative z-10 flex-1 pt-18">
         
-        {/* Dedicated Tab Bar Indicator */}
+        {/* Dedicated Tab Bar Indicator (Clean typography, no fake pulsing dots) */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-2 flex items-center justify-between text-xs text-zinc-400">
-          <div className="flex items-center gap-2 font-mono">
-            <span className="w-2 h-2 rounded-full bg-white shadow-sm shadow-white/60 animate-pulse"></span>
-            <span className="text-zinc-500">View:</span>
-            <span className="text-white font-bold">{getTabLabel(activeTab)}</span>
-            <span className="text-zinc-500">({currentTabIndex + 1} of {VALID_TABS.length})</span>
+          <div className="flex items-center gap-2">
+            <span className="text-zinc-500 font-semibold">View:</span>
+            <span className="text-white font-extrabold">{getTabLabel(activeTab)}</span>
+            <span className="text-zinc-500 font-medium">({currentTabIndex + 1} of {VALID_TABS.length})</span>
           </div>
         </div>
 
@@ -153,7 +143,7 @@ export default function App() {
               />
             )}
 
-            {/* 2. Focus & Expertise (Placed BEFORE EducationSection) */}
+            {/* 2. Focus & Expertise */}
             {activeTab === 'focus' && (
               <FocusSection 
                 onSelectService={handleSelectService} 
@@ -187,7 +177,7 @@ export default function App() {
               />
             )}
 
-            {/* Bottom Tab Pagination Controls - Transparent Buttons */}
+            {/* Bottom Tab Pagination Controls */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 border-t border-white/10 flex items-center justify-between gap-4">
               {prevTab ? (
                 <a
@@ -198,9 +188,9 @@ export default function App() {
                   }}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 backdrop-blur-md text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer active:scale-95"
                 >
-                  <ChevronLeft className="w-4 h-4 text-zinc-300" />
-                  <div className="text-left">
-                    <span className="block text-[10px] text-zinc-400 uppercase tracking-wider font-mono">Previous Page</span>
+                  <ChevronLeft className="w-4 h-4 text-white transition-colors" />
+                  <div>
+                    <span className="block text-[10px] text-zinc-400 uppercase tracking-wider font-semibold">Previous</span>
                     <span>{getTabLabel(prevTab)}</span>
                   </div>
                 </a>
@@ -213,10 +203,10 @@ export default function App() {
                     e.preventDefault();
                     handleTabChange(nextTab);
                   }}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/25 backdrop-blur-md text-white text-xs font-black transition-all cursor-pointer shadow-md active:scale-95 group"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 backdrop-blur-md text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer active:scale-95 group"
                 >
                   <div className="text-right">
-                    <span className="block text-[10px] text-zinc-300 group-hover:text-white uppercase tracking-wider font-mono">Next Page</span>
+                    <span className="block text-[10px] text-zinc-400 group-hover:text-white uppercase tracking-wider font-semibold">Next</span>
                     <span>{getTabLabel(nextTab)}</span>
                   </div>
                   <ChevronRight className="w-4 h-4 text-white transition-colors" />
@@ -228,8 +218,8 @@ export default function App() {
 
       </main>
 
-      {/* Corporate Studio Footer */}
-      <Footer onTabChange={handleTabChange} />
+      {/* Clean Footer (with duplicate buttons removed) */}
+      <Footer />
 
       {/* Digital CV / Dossier Modal */}
       <ResumeModal
@@ -240,6 +230,3 @@ export default function App() {
     </div>
   );
 }
-
-
-

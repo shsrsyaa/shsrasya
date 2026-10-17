@@ -15,21 +15,16 @@ import {
 import { MY_PROFILE } from '../portfolioConfig';
 import { playTapSound } from '../utils/sound';
 
-export interface TabItem {
-  id: string;
-  label: string;
-  shortLabel: string;
-  icon: React.ElementType;
-  href: string;
-}
+export const NAV_TABS = [
+  { id: 'about', label: 'About', shortLabel: 'About', icon: Sparkles, href: '/about.html' },
+  { id: 'focus', label: 'Focus & Expertise', shortLabel: 'Focus', icon: FolderKanban, href: '/focus.html' },
+  { id: 'education', label: 'Education', shortLabel: 'Education', icon: GraduationCap, href: '/education.html' },
+  { id: 'experience', label: 'Experience', shortLabel: 'Experience', icon: Briefcase, href: '/experience.html' },
+  { id: 'skills', label: 'Skills & Toolkit', shortLabel: 'Skills', icon: Wrench, href: '/skills.html' },
+  { id: 'connect', label: 'Connect', shortLabel: 'Connect', icon: Send, href: '/connect.html' },
+];
 
-interface NavbarProps {
-  activeTab: string;
-  onTabChange: (tabId: string) => void;
-  onOpenResume: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenResume }) => {
+export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -41,7 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleTabClick = (tabId: string) => {
+  const handleTabClick = (tabId) => {
     playTapSound(500, 0.03);
     onTabChange(tabId);
     setMobileMenuOpen(false);
@@ -51,13 +46,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#050505]/75 backdrop-blur-xl border-b border-white/10 shadow-xl shadow-black/80'
-          : 'bg-[#050505]/45 backdrop-blur-md border-b border-white/10'
+          ? 'bg-[#050505]/85 backdrop-blur-xl border-b border-white/10 shadow-xl shadow-black/80'
+          : 'bg-[#050505]/50 backdrop-blur-md border-b border-white/10'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between gap-6">
         
-        {/* Zone 1: Wordmark Brand Title */}
+        {/* Zone 1: Wordmark Brand Title (Clean typography without fake status dots) */}
         <a 
           href="/about.html"
           onClick={(e) => {
@@ -65,13 +60,12 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
             playTapSound(480, 0.03);
             handleTabClick('about');
           }}
-          className="text-base sm:text-lg font-black font-display tracking-tight text-white whitespace-nowrap shrink-0 hover:text-zinc-300 transition-colors flex items-center gap-2 group"
+          className="text-lg sm:text-xl font-extrabold font-display tracking-tight text-white whitespace-nowrap shrink-0 hover:text-zinc-200 transition-colors"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-white shadow-sm shadow-white/70 group-hover:scale-125 transition-transform"></span>
           <span>Sahasrasya<span className="silver-text">.</span></span>
         </a>
 
-        {/* Zone 2: 6 Structured Active Tabs - Transparent with NO SVG ICONS */}
+        {/* Zone 2: Clean Single-Line Navigation Tabs */}
         <nav className="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-md p-1 rounded-xl border border-white/15">
           {NAV_TABS.map((tab) => {
             const isActive = activeTab === tab.id;
@@ -95,14 +89,15 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
           })}
         </nav>
 
-        {/* Zone 3: 1 Primary Action (Credentials / CV) & Mobile Toggle - Transparent Buttons */}
+        {/* Zone 3: Primary Action (CV / Dossier) & Mobile Drawer Button */}
         <div className="flex items-center gap-2.5 shrink-0">
           <button
+            type="button"
             onClick={() => {
               playTapSound(550, 0.04);
               onOpenResume();
             }}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md rounded-lg transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap shrink-0 group"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md rounded-lg transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
           >
             <FileText className="w-3.5 h-3.5 text-white" />
             <span>CV &amp; Dossier</span>
@@ -110,6 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
 
           {/* Mobile Menu Toggle Button */}
           <button
+            type="button"
             onClick={() => {
               playTapSound(500, 0.03);
               setMobileMenuOpen(!mobileMenuOpen);
@@ -124,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#080808]/85 backdrop-blur-2xl border-b border-white/15 px-5 py-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200 shadow-2xl">
+        <div className="lg:hidden bg-[#080808]/95 backdrop-blur-2xl border-b border-white/15 px-5 py-4 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200 shadow-2xl">
           <div className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest px-2 font-mono">
             Navigation Menu
           </div>
@@ -166,6 +162,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
               <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
             </a>
             <button
+              type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenResume();
@@ -181,4 +178,3 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onTabChange, onOpenRe
     </header>
   );
 };
-

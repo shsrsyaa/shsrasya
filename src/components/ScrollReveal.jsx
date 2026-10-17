@@ -1,17 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-interface ScrollRevealProps {
-  children: React.ReactNode;
-  className?: string;
-  delay?: number;
-}
-
-export const ScrollReveal: React.FC<ScrollRevealProps> = ({
+export const ScrollReveal = ({
   children,
   className = '',
   delay = 0
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

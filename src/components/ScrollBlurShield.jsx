@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export const ScrollBlurShield: React.FC = () => {
+export const ScrollBlurShield = () => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {

@@ -11,8 +11,8 @@ export const MY_PROFILE = {
   location: 'Surabaya, Indonesia',
   origin: 'Bali, Indonesia',
   email: 'tuddechnnel07@gmail.com',
-  bio: `Information Systems undergraduate at Institut Teknologi Sepuluh Nopember (ITS) leading tech venture prototyping, modern frontend architectures, and digital product strategy. Dedicated to engineering fast, accessible web applications and translating user discovery into market-ready ventures.`,
-  extendedBio: `Combining semantic web standards (HTML5/CSS3/JavaScript) with hands-on agile event operations, cross-functional logistics leadership, and creative digital media. Operating at the intersection of technical execution and venture building to deliver high-impact digital solutions.`,
+  bio: 'Information Systems undergraduate at Institut Teknologi Sepuluh Nopember (ITS) leading tech venture prototyping, modern frontend architectures, and digital product strategy. Dedicated to engineering fast, accessible web applications and translating user discovery into market-ready ventures.',
+  extendedBio: 'Combining semantic web standards (HTML5/CSS3/JavaScript) with hands-on agile event operations, cross-functional logistics leadership, and creative digital media. Operating at the intersection of technical execution and venture building to deliver high-impact digital solutions.',
   avatar: rasyaHeadshot,
   itsPhoto: itsSidePhoto,
   socials: {
@@ -279,4 +279,3 @@ export const MY_ORGANIZATIONS = [
     description: 'Directed field operations, timeline enforcement, and site management for multi-cohort gatherings and community development initiatives. Coordinated documentation teams across videography and photography workflows, curating promotional assets while leading live on-ground coordination and conflict resolution.'
   }
 ];
-
