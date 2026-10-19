@@ -1,6 +1,0 @@
-{
-  "summary": "Implementation plan for removing footer navigation links, upgrading to bold professional typography (Plus Jakarta Sans and Inter), eliminating AI-slop visual artifacts, and fully migrating the codebase from TypeScript to clean modern JavaScript.",
-  "updatedAt": "2026-10-17T16:35:48.634667167Z",
-  "requestFeedback": true,
-  "userFacing": true
-}
