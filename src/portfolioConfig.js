@@ -11,8 +11,8 @@ export const MY_PROFILE = {
   location: 'Surabaya, Indonesia',
   origin: 'Bali, Indonesia',
   email: 'tuddechnnel07@gmail.com',
-  bio: 'Information Systems undergraduate at Institut Teknologi Sepuluh Nopember (ITS) leading tech venture prototyping, modern frontend architectures, and digital product strategy. Dedicated to engineering fast, accessible web applications and translating user discovery into market-ready ventures.',
-  extendedBio: 'Combining semantic web standards (HTML5/CSS3/JavaScript) with hands-on agile event operations, cross-functional logistics leadership, and creative digital media. Operating at the intersection of technical execution and venture building to deliver high-impact digital solutions.',
+  bio: 'Information Systems undergraduate at Institut Teknologi Sepuluh Nopember (ITS) leading tech venture prototyping, modern frontend architectures, and digital product strategy. Dedicated to engineering fast, accessible web applications and translating user discovery into market ready ventures.',
+  extendedBio: 'Combining semantic web standards (HTML5/CSS3/JavaScript) with hands on agile event operations, functional logistics leadership, and creative digital media. Operating at the intersection of technical execution and venture building to deliver impact digital solutions.',
   avatar: rasyaHeadshot,
   itsPhoto: itsSidePhoto,
   socials: {
@@ -27,25 +27,24 @@ export const MY_SERVICES = [
   {
     id: 'webapp-dev',
     title: 'Web App Development',
-    subtitle: 'Frontend Architecture & High-Performance Web',
-    description: 'Engineering semantic, accessible, and ultra-responsive web applications built with modern HTML5, CSS3, JavaScript, and modern tooling with sub-second initial load speeds.',
+    subtitle: 'Frontend Architecture & High Performance Web',
+    description: 'Building fast, accessible, and responsive web applications using modern HTML5, CSS3, and JavaScript with clean code and quick load times.',
     deliverables: [
       'Semantic & Accessible HTML5 / CSS3 Architectures',
-      'Modern Client-Side JavaScript UI Components',
-      'Fluid Cross-Device Responsive Layouts',
+      'Modern Client Side JavaScript UI Components',
       'Lighthouse Optimization & Sub-Second Latency'
     ],
-    technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'Tailwind CSS', 'Vite'],
+    technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)'],
     badge: 'Core Service'
   },
   {
     id: 'uiux-prototyping',
     title: 'UI/UX Prototyping',
     subtitle: 'User Research, Wireframing & Rapid Validation',
-    description: 'De-risking product hypotheses through structured user discovery interviews, low-fidelity wireframes, high-fidelity clickable prototypes, and usability stress-testing.',
+    description: 'Turning product concepts into wireframes and clickable prototypes, backed by user research and usability testing.',
     deliverables: [
       'Qualitative User Research & Persona Mapping',
-      'Low & High-Fidelity Interactive Wireframing',
+      'Low & High Fidelity Interactive Wireframing',
       'Design System Foundations',
       'Usability Audits & User Friction Elimination'
     ],
@@ -54,12 +53,12 @@ export const MY_SERVICES = [
   },
   {
     id: 'startup-advisory',
-    title: 'Startup MVP Advisory',
+    title: 'Startup Advisory',
     subtitle: 'Product Scoping & Market Execution',
-    description: 'Translating early stage concepts into lean, market ready MVPs. Structuring feature prioritization, agile development sprints, and tactical market operational roadmaps.',
+    description: 'Helping turn early concepts into working. Focusing on core feature prioritization, practical sprint planning, and realistic launch steps.',
     deliverables: [
       'Value Proposition & Lean Canvas Definition',
-      'Minimum Viable Product (MVP) Scope Definition',
+      'Minimum Viable Product Scope Definition',
       'Sprint Planning & Agile Delivery Cadence',
       'Market Launch Strategy & Operations'
     ],
@@ -70,14 +69,14 @@ export const MY_SERVICES = [
     id: 'video-production',
     title: 'Creative Video Production',
     subtitle: 'Visual Content, Motion Storytelling & Media Assets',
-    description: 'End-to-end creative video production and editing for high engagement product launches, investor reels, event documentaries, and social media brand communication.',
+    description: 'End to end creative video production and editing for high engagement product launches, investor reels, event documentaries, and social media brand communication.',
     deliverables: [
-      'Short-Form Video Editing (Reels, TikTok, Shorts)',
+      'Short Form Video Editing (Reels, TikTok, Shorts)',
       'Promotional Launch Trailers & Product Overviews',
       'Audio Synchronization, Sound Design & Color Grading',
-      'Motion Visual Graphics & Social Branding Packs'
+      'Motion Visual Graphics & Social Branding'
     ],
-    technologies: ['Adobe Premiere Pro', 'CapCut', 'Alight Motion', 'Canva'],
+    technologies: ['Adobe Premiere Pro', 'CapCut', 'Alight Motion', 'Canva', 'VSCode'],
     badge: 'Creative'
   }
 ];
@@ -91,12 +90,12 @@ export const MY_CASE_STUDIES = [
     period: '2024 & 2025',
     location: 'Semarapura, Bali',
     category: 'Operations & Logistics',
-    problem: 'Multi day traditional and community festivities demanded synchronization of distributed local vendor supplies, volatile temporary electrical grids, physical staging, and multi-thousand-dollar communal asset inventories with zero tolerance for blackout or operational downtime.',
-    solution: 'Designed a standardized logistics manifest and physical supply pipeline. Deployed specialized sub-teams across electrical infrastructure, acoustic staging, and security checkpoints with morning daily stand-ups and active contingency protocols.',
-    techStack: ['Operations Manifesting', 'Resource Logistics', 'Safety Protocols', 'Audio-Visual Staging', 'Cross-Functional Leadership'],
+    problem: 'Managing multi day traditional community events required coordinating local vendor supplies, temporary power setups, physical staging, and valuable communal equipment without any downtime.',
+    solution: 'Designed a clear logistics checklist and daily schedule. Coordinated teams across electrical setups, stage assembly, and safety checks to ensure everything ran smoothly from start to finish.',
+    techStack: ['Operations Manifesting', 'Resource Logistics', 'Safety Protocols', 'Audio Visual Staging', 'Cross Functional Leadership'],
     metrics: [
-      { label: 'Operational Downtime', value: '0 Hours' },
-      { label: 'Event Delivery Rate', value: '100% On-Time' },
+      { label: 'Operational Downtime', value: '12 Hours' },
+      { label: 'Event Delivery Rate', value: '90% On-Time' },
       { label: 'Field Crew Supervised', value: '40+ Members' }
     ],
     impact: 'Achieved 100% on-time milestone delivery across two consecutive annual terms. Zero equipment failures or power blackouts during peak ceremonial events, earning sustained community leadership trust.',
@@ -106,75 +105,74 @@ Key challenges involved managing scarce temporary power distribution, safely coo
   },
   {
     id: 'owl-fest',
-    title: 'High-Density Campus Festival Security & Perimeter Architecture',
+    title: 'Campus Festival Security & Perimeter Architecture',
     organization: 'OWL FEST V (SWARA)',
     role: 'Security & Crowd Control Division',
     period: '2024',
     location: 'Semarapura, Bali',
     category: 'Crowd & Safety Operations',
-    problem: 'Over 900+ festival attendees, VIP musical artists, and institutional guests converged at a single enclosed festival ground, creating dangerous entry bottlenecks, perimeter breach vulnerabilities, and high risk of crowd surges.',
-    solution: 'Engineered single-flow pedestrian ingress/egress corridors, instituted a multi-tier ticket scanning checkpoint, and deployed radio communication relays across perimeter outposts. Established discrete VIP security escort paths and emergency evacuation lanes.',
+    problem: 'Handling over 900 festivalgoers, guest artists, and school officials in a single enclosed venue, requiring careful crowd control and bottleneck prevention.',
+    solution: 'Set up clear entry and exit lanes, streamlined ticket checks, and used radio communication to keep security teams aligned and maintain an orderly, safe environment.',
     techStack: ['Crowd Flow Modeling', 'Perimeter Architecture', 'Emergency Evacuation Plans', 'Risk Triage Protocols', 'Real-Time Radio Relays'],
     metrics: [
       { label: 'Attendees Managed', value: '900+ People' },
-      { label: 'Critical Incidents', value: '0 Reported' },
-      { label: 'Ingress Bottleneck Cut', value: '-35% Wait Time' }
+      { label: 'SWARA Security Crew', value: '25+ Members' }
     ],
     impact: 'Delivered an incident-free high-density festival. Ticket verification throughput accelerated by 35%, preventing street congestion, while artists and VIP delegations completed all appearances without schedule deviation.',
-    fullCase: `OWL FEST V brought together high-energy musical acts and a crowd exceeding 900 people. Operating on the frontlines of crowd control and perimeter defense required decisive situational awareness. 
+    fullCase: `OWL FEST V brought together high energy musical acts and a crowd exceeding 900 people. Operating on the frontlines of crowd control and perimeter defense required decisive situational awareness. 
 
 We mapped the entire venue perimeter to eliminate blind spots, designed one-way pedestrian lanes that prevented counter-flow blockages, and coordinated closely with institutional leaders to ensure immediate medical access corridors.`
   },
   {
     id: 'ceketer',
-    title: 'Multi-Cohort Community Field Direction & Media Pipeline',
+    title: 'Cohort Community Field Direction & Media Pipeline',
     organization: 'CEKETER (Cohort Community)',
     role: 'Field Operations & Event Coordinator',
     period: '2024 – 2026',
     location: 'Bali, Indonesia',
     category: 'Community Leadership',
-    problem: 'Managing decentralized gatherings across multi-year cohort members in Bali suffered from conflicting schedule expectations, fragmented communication channels, and uncoordinated on-ground documentation.',
-    solution: 'Instituted unified digital schedules, led on-site field orchestration, resolved live logistical conflicts, and coordinated a dedicated mobile media squad to capture high-definition promotional photo/video assets for community archives.',
+    problem: 'Coordinating gatherings across multiyear cohort members in School, often dealing with schedule mismatches and scattered communication.',
+    solution: 'Established simple shared schedules, handled on ground coordination, and managed a media team to capture and curate photo and video highlights for community archives.',
     techStack: ['Field Coordination', 'Agile Timeline Enforcement', 'Media Production Direction', 'Conflict Mediation', 'Community Engagement'],
     metrics: [
       { label: 'Active Program Cycle', value: '2+ Years' },
       { label: 'Timeline Adherence', value: '98%' },
       { label: 'Media Deliverables', value: '50+ Assets' }
     ],
-    impact: 'Strengthened cross-cohort retention and collaboration, maintaining a 98% on-schedule operational track record across multiple community programs and delivering polished social visual assets.',
-    fullCase: `At CEKETER, bridging generational cohorts requires balancing operational structure with an open, engaging atmosphere. As Field Operations & Event Coordinator from 2024 to 2026, I managed logistical schedules and led live conflict resolution on-site. 
+    impact: 'Strengthened cross-cohort retention and collaboration, maintaining a 98% on schedule operational track record across multiple community programs and delivering polished social visual assets.',
+    fullCase: `At CEKETER, bridging generational cohorts requires balancing operational structure with an open, engaging atmosphere. As Field Operations & Event Coordinator from 2024 to 2026, I managed logistical schedules and led live conflict resolution at site. 
 
 Additionally, I directed the documentation squad, translating raw event footage into compelling highlight reels using Premiere Pro and CapCut to drive community engagement.`
   }
 ];
 
 export const MY_PROCESS_STEPS = [
-  {
+  {'
     number: '01',
     step: 'Discovery & Research',
     tagline: 'Uncovering Core Friction & Strategic Targets',
-    description: 'We initiate by listening deeply: auditing the problem space, conducting stakeholder and user discovery interviews, analyzing competitive alternatives, and establishing concrete quantitative milestones.',
+    description: 'We start by listening: understanding the core problem, talking with users or stakeholders, looking at existing alternatives, and setting clear goals.',
     outputs: ['User Pain Point Audit', 'Persona & Journey Mapping', 'KPI & Success Metrics']
   },
   {
     number: '02',
     step: 'UI/UX Prototyping',
     tagline: 'Translating Insights into Interactive Prototypes',
-    description: 'Hypotheses are tested rapidly through structured wireframes and high-fidelity clickable UI prototypes. Design ergonomics, cognitive load, and accessibility standards are rigorously evaluated.',
+    description: 'Turning ideas into quick wireframes and interactive prototypes to test usability, user flow, and design layout early on.',
     outputs: ['Clickable Wireframes', 'Component Design System', 'Usability Verification']
   },
   {
     number: '03',
     step: 'Clean Code Development',
     tagline: 'Semantic, High-Performance Frontend Execution',
-    description: 'Transforming prototypes into production-grade, responsive code. Leveraging semantic HTML5, modern CSS3 layouts, and optimized JavaScript with zero-bloat architecture and smooth interactions.',
-    outputs: ['Semantic HTML5/CSS3/JS', '100% Responsive Layouts', 'Cross-Browser Verification']
+    description: 'Writing clean, responsive code using semantic HTML, modern CSS, and JavaScript for a smooth and fast user experience.',
+    outputs: ['Semantic HTML5/CSS3/JS', 'Clean Layouts', 'Cross Browser Verification']
   },
   {
     number: '04',
-    step: 'Go-To-Market & Deployment',
+    step: 'Go To Market & Deployment',
     tagline: 'Venture Launch & Iterative Optimization',
-    description: 'Preparing the digital product for market entry. We test deployment resilience, align promotional launch media (trailers and video reels), and monitor initial user adoption for iterative enhancement.',
+    description: 'Preparing the product for launch, testing performance, putting together launch videos or trailers, and gathering feedback for improvements.',
     outputs: ['Production Deployment', 'Promotional Video Launch Pack', 'User Feedback Loop']
   }
 ];
@@ -188,7 +186,7 @@ export const MY_VENTURES = [
     stage: 'Concept Prototype',
     description: 'A digital engineering and aesthetic platform for motorcycle enthusiasts and customizers. Features parts compatibility mapping, dimensional fit calculations, and community build spec sheets.',
     domain: 'Automotive Tech & Smart Mobility',
-    focusTags: ['Parts Compatibility', 'Custom Aesthetics', 'Spec Sheets', 'Automotive Space'],
+    focusTags: ['Parts Compatibility', 'Custom', 'Spec Sheets', 'Automotive Space'],
     status: 'In Validation at ITS'
   },
   {
@@ -197,9 +195,9 @@ export const MY_VENTURES = [
     tagline: 'Agile Product Discovery Portal for Student Founders',
     institution: 'Department of Information Systems, ITS',
     stage: 'Research & Prototyping',
-    description: 'A streamlined web dashboard guiding student product teams from problem validation to clickable prototype testing and rapid peer cohort feedback loops.',
+    description: 'A simple web dashboard to help student product teams move from validating ideas to testing prototypes and gathering feedback.',
     domain: 'EdTech & Venture Building',
-    focusTags: ['MVP Roadmapping', 'User Interview Log', 'Feature Prioritization', 'ITS Founders'],
+    focusTags: ['Roadmapping', 'User Interview Log', 'Feature Prioritization', 'ITS Founders'],
     status: 'Active Prototyping'
   },
   {
@@ -208,7 +206,7 @@ export const MY_VENTURES = [
     tagline: 'Real-Time Field Logistics & Incident Command Engine',
     institution: 'Field Experience Initiative',
     stage: 'Architecture Phase',
-    description: 'Codifying real-world field operations (derived from STT Banjar Youth and OWL FEST) into an automated checklist, radio-channel assignment, and incident reporting system for campus festivals.',
+    description: 'Turning world field management experience (from STT Banjar Youth and OWL FEST) into a digital tool for checklists, radio assignments, and incident tracking during campus events.',
     domain: 'Event Management & Operations',
     focusTags: ['Checklist Automation', 'Crowd Safety', 'Incident Triage', 'Resource Tracking'],
     status: 'Architecture Phase'
@@ -262,20 +260,20 @@ export const MY_ORGANIZATIONS = [
     organization: 'Banjar Youth Organization (STT)',
     location: 'Semarapura, Bali',
     period: '2024 & 2025',
-    description: 'Spearheaded end-to-end logistical planning and operational resource management for multi-day traditional and community celebrations. Supervised operational crews across procurement, electrical layout, staging, sound installations, and inventory management, ensuring zero operational downtime and 100% on-time event delivery across successive terms.'
+    description: 'Managed logistical planning and operations for multiday traditional community celebrations. Supervised teams handling equipment procurement, electrical layouts, staging, and sound systems to ensure events ran smoothly and on schedule.'
   },
   {
     role: 'Security & Crowd Control Division',
     organization: 'OWL FEST V (SWARA)',
     location: 'Semarapura, Bali',
     period: '2024',
-    description: 'Orchestrated crowd management, perimeter surveillance, and emergency protocols for over 900+ festival attendees, VIP guest performers, and school officials. Designed single-flow entrance and exit corridors, performed proactive risk triage, and collaborated with local security teams to maintain an orderly, safe, and incident-free festival environment.'
+    description: 'Managed crowd flow, venue safety, and security protocols for over 900 attendees and guest performers. Designed efficient entry/exit routes and worked with local security teams to keep the event safe and orderly.'
   },
   {
     role: 'Field Operations & Event Coordinator',
     organization: 'CEKETER (Cohort Community)',
     location: 'Bali, Indonesia',
     period: '2024 – 2026',
-    description: 'Directed field operations, timeline enforcement, and site management for multi-cohort gatherings and community development initiatives. Coordinated documentation teams across videography and photography workflows, curating promotional assets while leading live on-ground coordination and conflict resolution.'
-  }
+    description: 'Directed field operations, schedule planning, and site management for community gatherings. Coordinated documentation teams across photo and video workflows to produce promotional assets and event highlights.'
+  },
 ];
