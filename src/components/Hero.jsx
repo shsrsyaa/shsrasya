@@ -1,26 +1,9 @@
 import React from 'react';
-import { ArrowUpRight, MapPin, Briefcase, ChevronRight } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { MY_PROFILE } from '../portfolioConfig';
 import { TiltCard } from './TiltCard';
-import { playTapSound } from '../utils/sound';
 
-export const Hero = ({ onOpenResume, onNavigateToTab }) => {
-  const handleScrollTo = (sectionId) => {
-    playTapSound(500, 0.03);
-    if (onNavigateToTab) {
-      onNavigateToTab(sectionId);
-    }
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerOffset = 76;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+export const Hero = () => {
 
   return (
     <section id="about" className="relative pt-28 pb-16 sm:pt-36 sm:pb-24 overflow-hidden border-b border-white/10">
@@ -54,7 +37,7 @@ export const Hero = ({ onOpenResume, onNavigateToTab }) => {
             {/* Identity & Real Bio */}
             <div className="space-y-3 text-xs sm:text-sm text-zinc-300 max-w-xl leading-relaxed">
               <p>
-                Led by <span className="text-white font-bold">{MY_PROFILE.fullName}</span> ({MY_PROFILE.callName}). {MY_PROFILE.bio}
+                I am <span className="text-white font-bold">{MY_PROFILE.fullName}</span> ({MY_PROFILE.callName}). {MY_PROFILE.bio}
               </p>
               <p className="text-zinc-400 text-xs leading-relaxed">
                 {MY_PROFILE.extendedBio}
@@ -71,31 +54,9 @@ export const Hero = ({ onOpenResume, onNavigateToTab }) => {
               <span aria-hidden="true" className="text-zinc-700">·</span>
               <span>Web Applications</span>
               <span aria-hidden="true" className="text-zinc-700">·</span>
-              <span>Rapid Prototyping</span>
+              <span>Frontend Development</span>
               <span aria-hidden="true" className="text-zinc-700">·</span>
-              <span>Agile Systems</span>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-3 w-full sm:w-auto">
-              <button
-                type="button"
-                onClick={() => handleScrollTo('focus')}
-                className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/25 backdrop-blur-md font-bold text-xs transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap group"
-              >
-                <Briefcase className="w-3.5 h-3.5 text-white" />
-                <span>Explore Capabilities</span>
-                <ChevronRight className="w-3.5 h-3.5 text-zinc-300 group-hover:text-white" />
-              </button>
-              
-              <button
-                type="button"
-                onClick={() => handleScrollTo('experience')}
-                className="px-5 py-3 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 hover:text-white border border-white/20 backdrop-blur-md font-bold text-xs transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
-              >
-                <span>Experience</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-zinc-300" />
-              </button>
+              <span>Information Systems</span>
             </div>
 
           </div>

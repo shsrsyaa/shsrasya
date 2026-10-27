@@ -52,7 +52,7 @@ export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between gap-6">
         
-        {/* Zone 1: Wordmark Brand Title (Clean typography without fake status dots) */}
+        {/* Zone 1: Wordmark Brand Title (Portofolio with code logo) */}
         <a 
           href="/about.html"
           onClick={(e) => {
@@ -60,9 +60,16 @@ export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
             playTapSound(480, 0.03);
             handleTabClick('about');
           }}
-          className="text-lg sm:text-xl font-extrabold font-display tracking-tight text-white whitespace-nowrap shrink-0 hover:text-zinc-200 transition-colors"
+          className="flex items-center gap-2.5 text-lg sm:text-xl font-extrabold font-display tracking-tight text-white whitespace-nowrap shrink-0 hover:text-zinc-200 transition-colors group"
         >
-          <span>Sahasrasya<span className="silver-text">.</span></span>
+          <span className="flex items-center gap-2.5">
+            <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-zinc-900 border border-zinc-700/80 text-red-500 font-mono text-xs font-bold shadow-inner group-hover:border-red-500/50 group-hover:text-red-400 transition-all">
+              &lt;/&gt;
+            </span>
+            <span className="font-display font-extrabold text-white tracking-tight">
+              Portofolio<span className="text-red-500">.</span>
+            </span>
+          </span>
         </a>
 
         {/* Zone 2: Clean Single-Line Navigation Tabs */}

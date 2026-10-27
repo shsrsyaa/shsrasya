@@ -11,8 +11,8 @@ export const MY_PROFILE = {
   location: 'Surabaya, Indonesia',
   origin: 'Bali, Indonesia',
   email: 'tuddechnnel07@gmail.com',
-  bio: 'Information Systems undergraduate at Institut Teknologi Sepuluh Nopember (ITS) leading tech venture prototyping, modern frontend architectures, and digital product strategy. Dedicated to engineering fast, accessible web applications and translating user discovery into market ready ventures.',
-  extendedBio: 'Combining semantic web standards (HTML5/CSS3/JavaScript) with hands on agile event operations, functional logistics leadership, and creative digital media. Operating at the intersection of technical execution and venture building to deliver impact digital solutions.',
+  bio: 'Information Systems student at Institut Teknologi Sepuluh Nopember (ITS) focused on web development, clean frontend interfaces, and practical software applications.',
+  extendedBio: 'Building responsive websites and interactive applications using HTML5, CSS3, and JavaScript, with hands-on experience in student organizations, community leadership, and event operations.',
   avatar: rasyaHeadshot,
   itsPhoto: itsSidePhoto,
   socials: {
@@ -147,7 +147,7 @@ Additionally, I directed the documentation squad, translating raw event footage 
 ];
 
 export const MY_PROCESS_STEPS = [
-  {'
+  {
     number: '01',
     step: 'Discovery & Research',
     tagline: 'Uncovering Core Friction & Strategic Targets',
