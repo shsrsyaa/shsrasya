@@ -8,9 +8,10 @@ import {
   Briefcase, 
   GraduationCap,
   FolderKanban, 
-  Wrench,
+  Wrench, 
   Send,
-  ArrowUpRight
+  ArrowUpRight,
+  GitBranch
 } from 'lucide-react';
 import { MY_PROFILE } from '../portfolioConfig';
 import { playTapSound } from '../utils/sound';
@@ -24,7 +25,7 @@ export const NAV_TABS = [
   { id: 'connect', label: 'Connect', shortLabel: 'Connect', icon: Send, href: '/connect.html' },
 ];
 
-export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
+export const Navbar = ({ activeTab, onOpenResume }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -35,12 +36,6 @@ export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const handleTabClick = (tabId) => {
-    playTapSound(500, 0.03);
-    onTabChange(tabId);
-    setMobileMenuOpen(false);
-  };
 
   return (
     <header
@@ -55,16 +50,24 @@ export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
         {/* Zone 1: Wordmark Brand Title (Portofolio with code logo) */}
         <a 
           href="/about.html"
-          onClick={(e) => {
-            e.preventDefault();
-            playTapSound(480, 0.03);
-            handleTabClick('about');
-          }}
+          onClick={() => playTapSound(480, 0.03)}
           className="flex items-center gap-2.5 text-lg sm:text-xl font-extrabold font-display tracking-tight text-white whitespace-nowrap shrink-0 hover:text-zinc-200 transition-colors group"
         >
           <span className="flex items-center gap-2.5">
-            <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-zinc-900 border border-zinc-700/80 text-red-500 font-mono text-xs font-bold shadow-inner group-hover:border-red-500/50 group-hover:text-red-400 transition-all">
-              &lt;/&gt;
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-gradient-to-b from-zinc-800 to-zinc-950 border border-white/20 text-white shadow-md group-hover:border-red-500/60 group-hover:shadow-red-950/40 transition-all">
+              <svg 
+                viewBox="0 0 24 24" 
+                className="w-4 h-4 text-white group-hover:text-red-400 transition-colors"
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              >
+                <path d="M6 4h6a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6V4z" />
+                <path d="M6 12h5l5 8" />
+                <circle cx="18" cy="6" r="1.5" className="fill-red-500 stroke-red-500" />
+              </svg>
             </span>
             <span className="font-display font-extrabold text-white tracking-tight">
               Portofolio<span className="text-red-500">.</span>
@@ -72,7 +75,7 @@ export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
           </span>
         </a>
 
-        {/* Zone 2: Clean Single-Line Navigation Tabs */}
+        {/* Zone 2: Clean Single-Line Navigation Tabs (Native Multi-Page HTML Links) */}
         <nav className="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-md p-1 rounded-xl border border-white/15">
           {NAV_TABS.map((tab) => {
             const isActive = activeTab === tab.id;
@@ -80,10 +83,7 @@ export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
               <a
                 key={tab.id}
                 href={tab.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleTabClick(tab.id);
-                }}
+                onClick={() => playTapSound(500, 0.03)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   isActive
                     ? 'bg-white/20 text-white shadow-sm border border-white/30 backdrop-blur-sm'
@@ -97,7 +97,7 @@ export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
         </nav>
 
         {/* Zone 3: Primary Action (CV / Dossier) & Mobile Drawer Button */}
-        <div className="flex items-center gap-2.5 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
           <button
             type="button"
             onClick={() => {
@@ -139,9 +139,9 @@ export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
                 <a
                   key={tab.id}
                   href={tab.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleTabClick(tab.id);
+                  onClick={() => {
+                    playTapSound(500, 0.03);
+                    setMobileMenuOpen(false);
                   }}
                   className={`flex items-center justify-between w-full px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left cursor-pointer ${
                     isActive
@@ -157,6 +157,17 @@ export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
           </div>
 
           <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
+            <a
+              href="https://github.com/shsrsyaa"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 py-2 text-xs font-semibold text-white bg-white/5 rounded-xl border border-white/15 hover:bg-white/15 transition-all font-mono"
+            >
+              <GitBranch className="w-3.5 h-3.5 text-red-400" />
+              <span>GitHub: @shsrsyaa</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
+            </a>
             <a
               href={MY_PROFILE.socials.instagram}
               target="_blank"

@@ -7,7 +7,8 @@ import {
   Copy, 
   Check, 
   ArrowUpRight, 
-  Send 
+  Send,
+  GitBranch
 } from 'lucide-react';
 import { MY_PROFILE } from '../portfolioConfig';
 import { ScrollReveal } from './ScrollReveal';
@@ -45,7 +46,7 @@ export const Contact = () => {
         </ScrollReveal>
 
         {/* Clean, Streamlined Direct Contact Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           
           {/* 1. Primary Email Card */}
           <ScrollReveal delay={50} className="h-full">
@@ -104,6 +105,55 @@ export const Contact = () => {
                     title="Send Email Directly"
                   >
                     <ArrowUpRight className="w-4 h-4 text-white" />
+                  </a>
+                </div>
+              </div>
+            </TiltCard>
+          </ScrollReveal>
+
+          {/* 2. GitHub Workspace Card */}
+          <ScrollReveal delay={75} className="h-full">
+            <TiltCard className="h-full">
+              <div className="p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 hover:border-white/30 shadow-2xl space-y-5 h-full flex flex-col justify-between transition-all duration-300">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2.5 rounded-xl bg-white/10 border border-white/15 text-white">
+                        <GitBranch className="w-5 h-5 text-red-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-sm font-extrabold font-display text-white">
+                          GitHub
+                        </h3>
+                        <p className="text-[11px] text-zinc-400">
+                          Source Code
+                        </p>
+                      </div>
+                    </div>
+                    <span className="text-[10px] text-red-400 uppercase font-bold px-2 py-0.5 rounded bg-red-950/40 border border-red-500/30">
+                      Active
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-white leading-relaxed font-bold font-mono">
+                    github.com/shsrsyaa
+                  </p>
+                  <p className="text-zinc-400 text-xs leading-relaxed">
+                    Repository commits, open source frontend architectures, and VS Code workspaces.
+                  </p>
+                </div>
+
+                <div className="pt-2">
+                  <a
+                    href="https://github.com/shsrsyaa"
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => playTapSound(600, 0.03)}
+                    className="w-full py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-xs font-bold text-white flex items-center justify-center gap-2 transition-all cursor-pointer font-mono"
+                  >
+                    <GitBranch className="w-3.5 h-3.5 text-red-400" />
+                    <span>View GitHub Profile</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
                   </a>
                 </div>
               </div>

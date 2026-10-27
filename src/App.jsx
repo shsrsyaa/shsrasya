@@ -116,31 +116,18 @@ export default function App() {
       {/* Top Navigation */}
       <Navbar 
         activeTab={activeTab}
-        onTabChange={handleTabChange}
         onOpenResume={() => setIsResumeOpen(true)} 
       />
 
       {/* Main Content Area */}
       <main className="relative z-10 flex-1 pt-18">
         
-        {/* Dedicated Tab Bar Indicator (Clean typography, no fake pulsing dots) */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-2 flex items-center justify-between text-xs text-zinc-400">
-          <div className="flex items-center gap-2">
-            <span className="text-zinc-500 font-semibold">View:</span>
-            <span className="text-white font-extrabold">{getTabLabel(activeTab)}</span>
-            <span className="text-zinc-500 font-medium">({currentTabIndex + 1} of {VALID_TABS.length})</span>
-          </div>
-        </div>
-
-        {/* Dedicated Tabbed Screen */}
+        {/* Dedicated Screen Content */}
         <div key={activeTab} className="animate-in fade-in duration-300 slide-in-from-bottom-2">
             
             {/* 1. About / Hero */}
             {activeTab === 'about' && (
-              <Hero 
-                onOpenResume={() => setIsResumeOpen(true)}
-                onNavigateToTab={handleTabChange}
-              />
+              <Hero />
             )}
 
             {/* 2. Focus & Expertise */}
@@ -177,15 +164,12 @@ export default function App() {
               />
             )}
 
-            {/* Bottom Tab Pagination Controls */}
+            {/* Bottom Tab Pagination Controls (Native Multi-Page HTML Links) */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 border-t border-white/10 flex items-center justify-between gap-4">
               {prevTab ? (
                 <a
                   href={getTabHref(prevTab)}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleTabChange(prevTab);
-                  }}
+                  onClick={() => playTapSound(500, 0.03)}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 backdrop-blur-md text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer active:scale-95"
                 >
                   <ChevronLeft className="w-4 h-4 text-white transition-colors" />
@@ -199,10 +183,7 @@ export default function App() {
               {nextTab ? (
                 <a
                   href={getTabHref(nextTab)}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleTabChange(nextTab);
-                  }}
+                  onClick={() => playTapSound(500, 0.03)}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 backdrop-blur-md text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer active:scale-95 group"
                 >
                   <div className="text-right">
@@ -218,7 +199,7 @@ export default function App() {
 
       </main>
 
-      {/* Clean Footer (with duplicate buttons removed) */}
+      {/* Clean Footer */}
       <Footer />
 
       {/* Digital CV / Dossier Modal */}

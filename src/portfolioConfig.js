@@ -16,6 +16,8 @@ export const MY_PROFILE = {
   avatar: rasyaHeadshot,
   itsPhoto: itsSidePhoto,
   socials: {
+    github: 'https://github.com/shsrsyaa',
+    githubRepo: 'https://github.com/shsrsyaa/shsrasya',
     instagram: 'https://www.instagram.com/shsrsyaa/',
     instagramHandle: '@shsrsyaa',
     linkedin: 'https://www.linkedin.com/in/i-p-g-divy-sahasrasya-391390434/',
