@@ -47,7 +47,7 @@ export const Hero = ({ onOpenResume, onNavigateToTab }) => {
                 Hi! I'm <span className="silver-text">Rasya</span><span className="text-white">.</span>
               </h1>
               <p className="text-sm sm:text-base font-bold text-zinc-300 tracking-tight">
-                Information Systems · Digital Innovation
+                Information Systems | Digital Innovation
               </p>
             </div>
 
@@ -93,7 +93,7 @@ export const Hero = ({ onOpenResume, onNavigateToTab }) => {
                 onClick={() => handleScrollTo('experience')}
                 className="px-5 py-3 rounded-xl bg-white/5 hover:bg-white/15 text-zinc-200 hover:text-white border border-white/20 backdrop-blur-md font-bold text-xs transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
               >
-                <span>Experience &amp; Leadership</span>
+                <span>Experience</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-zinc-300" />
               </button>
             </div>
@@ -129,7 +129,7 @@ export const Hero = ({ onOpenResume, onNavigateToTab }) => {
                       {MY_PROFILE.fullName}
                     </h2>
                     <p className="text-xs text-zinc-400 font-medium">
-                      Known as {MY_PROFILE.callName} · ITS Information Systems
+                      Known as {MY_PROFILE.callName} ITS Information Systems
                     </p>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ export const Hero = ({ onOpenResume, onNavigateToTab }) => {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-3 rounded-xl bg-white/5 border border-white/10">
                     <div className="text-lg font-extrabold text-white tracking-tight tabular-nums">2+ Terms</div>
-                    <div className="text-[11px] text-zinc-400 font-medium">Field Operations Lead</div>
+                    <div className="text-[11px] text-zinc-400 font-medium">Field Operations Staff</div>
                   </div>
                   <div className="p-3 rounded-xl bg-white/5 border border-white/10">
                     <div className="text-lg font-extrabold text-white tracking-tight tabular-nums">900+</div>
