@@ -10,8 +10,7 @@ import {
   FolderKanban, 
   Wrench, 
   Send,
-  ArrowUpRight,
-  GitBranch
+  ArrowUpRight
 } from 'lucide-react';
 import { MY_PROFILE } from '../portfolioConfig';
 import { playTapSound } from '../utils/sound';
@@ -25,7 +24,7 @@ export const NAV_TABS = [
   { id: 'connect', label: 'Connect', shortLabel: 'Connect', icon: Send, href: '/connect.html' },
 ];
 
-export const Navbar = ({ activeTab, onOpenResume }) => {
+export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -36,6 +35,15 @@ export const Navbar = ({ activeTab, onOpenResume }) => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleTabClick = (e, tabId) => {
+    playTapSound(500, 0.03);
+    if (onTabChange) {
+      e.preventDefault();
+      onTabChange(tabId);
+    }
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header
@@ -50,7 +58,7 @@ export const Navbar = ({ activeTab, onOpenResume }) => {
         {/* Zone 1: Wordmark Brand Title (Portofolio with code logo) */}
         <a 
           href="/about.html"
-          onClick={() => playTapSound(480, 0.03)}
+          onClick={(e) => handleTabClick(e, 'about')}
           className="flex items-center gap-2.5 text-lg sm:text-xl font-extrabold font-display tracking-tight text-white whitespace-nowrap shrink-0 hover:text-zinc-200 transition-colors group"
         >
           <span className="flex items-center gap-2.5">
@@ -75,7 +83,7 @@ export const Navbar = ({ activeTab, onOpenResume }) => {
           </span>
         </a>
 
-        {/* Zone 2: Clean Single-Line Navigation Tabs (Native Multi-Page HTML Links) */}
+        {/* Zone 2: Clean Single-Line Navigation Tabs */}
         <nav className="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-md p-1 rounded-xl border border-white/15">
           {NAV_TABS.map((tab) => {
             const isActive = activeTab === tab.id;
@@ -83,7 +91,7 @@ export const Navbar = ({ activeTab, onOpenResume }) => {
               <a
                 key={tab.id}
                 href={tab.href}
-                onClick={() => playTapSound(500, 0.03)}
+                onClick={(e) => handleTabClick(e, tab.id)}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   isActive
                     ? 'bg-white/20 text-white shadow-sm border border-white/30 backdrop-blur-sm'
@@ -139,10 +147,7 @@ export const Navbar = ({ activeTab, onOpenResume }) => {
                 <a
                   key={tab.id}
                   href={tab.href}
-                  onClick={() => {
-                    playTapSound(500, 0.03);
-                    setMobileMenuOpen(false);
-                  }}
+                  onClick={(e) => handleTabClick(e, tab.id)}
                   className={`flex items-center justify-between w-full px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all text-left cursor-pointer ${
                     isActive
                       ? 'bg-white/20 text-white border border-white/30 backdrop-blur-sm'
@@ -157,17 +162,6 @@ export const Navbar = ({ activeTab, onOpenResume }) => {
           </div>
 
           <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
-            <a
-              href="https://github.com/shsrsyaa"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-2 text-xs font-semibold text-white bg-white/5 rounded-xl border border-white/15 hover:bg-white/15 transition-all font-mono"
-            >
-              <GitBranch className="w-3.5 h-3.5 text-red-400" />
-              <span>GitHub: @shsrsyaa</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
-            </a>
             <a
               href={MY_PROFILE.socials.instagram}
               target="_blank"

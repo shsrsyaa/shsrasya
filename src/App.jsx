@@ -116,6 +116,7 @@ export default function App() {
       {/* Top Navigation */}
       <Navbar 
         activeTab={activeTab}
+        onTabChange={handleTabChange}
         onOpenResume={() => setIsResumeOpen(true)} 
       />
 
@@ -164,12 +165,16 @@ export default function App() {
               />
             )}
 
-            {/* Bottom Tab Pagination Controls (Native Multi-Page HTML Links) */}
+            {/* Bottom Tab Pagination Controls */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 border-t border-white/10 flex items-center justify-between gap-4">
               {prevTab ? (
                 <a
                   href={getTabHref(prevTab)}
-                  onClick={() => playTapSound(500, 0.03)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    playTapSound(500, 0.03);
+                    handleTabChange(prevTab);
+                  }}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 backdrop-blur-md text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer active:scale-95"
                 >
                   <ChevronLeft className="w-4 h-4 text-white transition-colors" />
@@ -183,7 +188,11 @@ export default function App() {
               {nextTab ? (
                 <a
                   href={getTabHref(nextTab)}
-                  onClick={() => playTapSound(500, 0.03)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    playTapSound(500, 0.03);
+                    handleTabChange(nextTab);
+                  }}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 backdrop-blur-md text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer active:scale-95 group"
                 >
                   <div className="text-right">
