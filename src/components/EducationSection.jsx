@@ -2,21 +2,11 @@ import React from 'react';
 import { 
   GraduationCap, 
   Globe, 
-  Code, 
-  Video, 
-  Layers, 
-  CheckCircle2, 
-  Wrench, 
-  MapPin, 
-  Instagram, 
-  Linkedin, 
-  ArrowUpRight, 
   FileText 
 } from 'lucide-react';
 import { 
   MY_EDUCATION, 
   MY_LANGUAGES, 
-  MY_SKILLS_CATEGORIES, 
   MY_PROFILE 
 } from '../portfolioConfig';
 import { ScrollReveal } from './ScrollReveal';
@@ -24,20 +14,6 @@ import { TiltCard } from './TiltCard';
 import { playTapSound } from '../utils/sound';
 
 export const EducationSection = ({ onOpenResume }) => {
-  const getToolkitIcon = (category) => {
-    switch (category) {
-      case 'Web App Development & Frontend Engineering':
-        return <Code className="w-4 h-4 text-white" />;
-      case 'UI/UX & Hardware Prototyping':
-        return <Layers className="w-4 h-4 text-zinc-300" />;
-      case 'Venture Strategy & Operations':
-        return <CheckCircle2 className="w-4 h-4 text-white" />;
-      case 'Creative Video & Visual Media':
-        return <Video className="w-4 h-4 text-zinc-300" />;
-      default:
-        return <Wrench className="w-4 h-4 text-zinc-400" />;
-    }
-  };
 
   return (
     <div className="pt-24 pb-20 sm:pt-32 sm:pb-28">
@@ -95,29 +71,9 @@ export const EducationSection = ({ onOpenResume }) => {
             </div>
 
             {/* Profile Overview Bio */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs sm:text-sm text-zinc-300">
-              <div className="md:col-span-2 space-y-3 leading-relaxed">
-                <p>{MY_PROFILE.bio}</p>
-                <p className="text-zinc-400 text-xs">{MY_PROFILE.extendedBio}</p>
-              </div>
-
-              <div className="space-y-2.5 p-4 rounded-2xl bg-white/5 border border-white/10 text-xs">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
-                  Contact &amp; Location
-                </div>
-                <div className="flex items-center gap-2 text-zinc-200">
-                  <MapPin className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-                  <span>{MY_PROFILE.location}</span>
-                </div>
-                <div className="flex items-center gap-2 text-zinc-200">
-                  <Instagram className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-                  <span>{MY_PROFILE.socials.instagramHandle}</span>
-                </div>
-                <div className="flex items-center gap-2 text-zinc-200">
-                  <Linkedin className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-                  <span>LinkedIn Profile Connected</span>
-                </div>
-              </div>
+            <div className="text-xs sm:text-sm text-zinc-300 space-y-3 leading-relaxed">
+              <p>{MY_PROFILE.bio}</p>
+              <p className="text-zinc-400 text-xs">{MY_PROFILE.extendedBio}</p>
             </div>
           </div>
         </ScrollReveal>
@@ -175,7 +131,7 @@ export const EducationSection = ({ onOpenResume }) => {
             
             {/* Languages Card */}
             <ScrollReveal>
-              <div className="p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 space-y-5 shadow-xl">
+              <div className="p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 space-y-5 shadow-xl lg:mt-21">
                 <div className="flex items-center gap-2">
                   <Globe className="w-4 h-4 text-white" />
                   <h3 className="text-base font-extrabold font-display text-white">
@@ -195,38 +151,6 @@ export const EducationSection = ({ onOpenResume }) => {
                           className="h-full bg-gradient-to-r from-red-600 to-white/90 rounded-full"
                           style={{ width: `${lang.level}%` }}
                         />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Skills Matrix Summary */}
-            <ScrollReveal delay={100}>
-              <div className="p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 space-y-4 shadow-xl">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-base font-extrabold font-display text-white">
-                    Capabilities Matrix
-                  </h3>
-                </div>
-
-                <div className="space-y-4">
-                  {MY_SKILLS_CATEGORIES.map((cat, cIdx) => (
-                    <div key={cIdx} className="space-y-2 pb-3 border-b border-white/5 last:border-0 last:pb-0">
-                      <div className="flex items-center gap-2 text-xs font-bold text-white">
-                        {getToolkitIcon(cat.category)}
-                        <span>{cat.category}</span>
-                      </div>
-                      <div className="flex flex-wrap gap-1.5">
-                        {cat.items.map((item, iIdx) => (
-                          <span 
-                            key={iIdx} 
-                            className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[11px] text-zinc-300 font-medium"
-                          >
-                            {item}
-                          </span>
-                        ))}
                       </div>
                     </div>
                   ))}

@@ -102,20 +102,8 @@ export const Navbar = ({ activeTab, onTabChange, onOpenResume }) => {
           })}
         </nav>
 
-        {/* Zone 3: Primary Action (CV / Dossier) & Mobile Drawer Button */}
+        {/* Zone 3: Mobile Drawer Button */}
         <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-          <button
-            type="button"
-            onClick={() => {
-              playTapSound(550, 0.04);
-              onOpenResume();
-            }}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md rounded-lg transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
-          >
-            <FileText className="w-3.5 h-3.5 text-white" />
-            <span>CV &amp; Dossier</span>
-          </button>
-
           {/* Mobile Menu Toggle Button */}
           <button
             type="button"
