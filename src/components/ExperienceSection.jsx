@@ -6,7 +6,9 @@ import {
   ArrowUpRight, 
   X, 
   CheckCircle2, 
-  Layers
+  Layers,
+  Cpu,
+  ClipboardList
 } from 'lucide-react';
 import { MY_CASE_STUDIES, MY_ORGANIZATIONS } from '../portfolioConfig';
 import { ScrollReveal } from './ScrollReveal';
@@ -17,7 +19,7 @@ export const ExperienceSection = () => {
   const [selectedFilter, setSelectedFilter] = useState('All');
   const [activeModalStudy, setActiveModalStudy] = useState(null);
 
-  const filters = ['All', 'Operations & Logistics', 'Crowd & Safety Operations', 'Community Leadership'];
+  const filters = ['All', 'Operations & Logistics', 'Crowd & Safety Operations', 'Community Leadership', 'Hardware & Prototyping'];
 
   const filteredStudies = selectedFilter === 'All'
     ? MY_CASE_STUDIES
@@ -28,9 +30,14 @@ export const ExperienceSection = () => {
       case 'banjar-youth':
         return <Users className="w-5 h-5 text-white" />;
       case 'owl-fest':
+      case 'disaster-korlap':
         return <Shield className="w-5 h-5 text-zinc-300" />;
       case 'ceketer':
         return <Calendar className="w-5 h-5 text-white" />;
+      case 'gpd-cup-festival':
+        return <ClipboardList className="w-5 h-5 text-white" />;
+      case 'arduino-water-monitor':
+        return <Cpu className="w-5 h-5 text-white" />;
       default:
         return <Layers className="w-5 h-5 text-zinc-400" />;
     }

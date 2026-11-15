@@ -7,7 +7,6 @@ import {
   Sparkles,
   Briefcase, 
   GraduationCap,
-  FolderKanban, 
   Wrench, 
   Send,
   ArrowUpRight
@@ -17,10 +16,9 @@ import { playTapSound } from '../utils/sound';
 
 export const NAV_TABS = [
   { id: 'about', label: 'About', shortLabel: 'About', icon: Sparkles, href: '/about.html' },
-  { id: 'focus', label: 'Focus & Expertise', shortLabel: 'Focus', icon: FolderKanban, href: '/focus.html' },
   { id: 'education', label: 'Education', shortLabel: 'Education', icon: GraduationCap, href: '/education.html' },
   { id: 'experience', label: 'Experience', shortLabel: 'Experience', icon: Briefcase, href: '/experience.html' },
-  { id: 'skills', label: 'Skills & Toolkit', shortLabel: 'Skills', icon: Wrench, href: '/skills.html' },
+  { id: 'skills', label: 'Capabilities & Toolkit', shortLabel: 'Capabilities', icon: Wrench, href: '/skills.html' },
   { id: 'connect', label: 'Connect', shortLabel: 'Connect', icon: Send, href: '/connect.html' },
 ];
 

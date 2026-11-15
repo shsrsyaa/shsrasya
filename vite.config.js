@@ -16,7 +16,6 @@ export default defineConfig(() => {
         input: {
           main: path.resolve(import.meta.dirname, 'index.html'),
           about: path.resolve(import.meta.dirname, 'about.html'),
-          focus: path.resolve(import.meta.dirname, 'focus.html'),
           education: path.resolve(import.meta.dirname, 'education.html'),
           experience: path.resolve(import.meta.dirname, 'experience.html'),
           skills: path.resolve(import.meta.dirname, 'skills.html'),

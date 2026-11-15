@@ -25,64 +25,6 @@ export const MY_PROFILE = {
   }
 };
 
-export const MY_SERVICES = [
-  {
-    id: 'webapp-dev',
-    title: 'Web App Development',
-    subtitle: 'Frontend Architecture & High Performance Web',
-    description: 'Building fast, accessible, and responsive web applications using modern HTML5, CSS3, and JavaScript with clean code and quick load times.',
-    deliverables: [
-      'Semantic & Accessible HTML5 / CSS3 Architectures',
-      'Modern Client Side JavaScript UI Components',
-      'Lighthouse Optimization & Sub-Second Latency'
-    ],
-    technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)'],
-    badge: 'Core Service'
-  },
-  {
-    id: 'uiux-prototyping',
-    title: 'UI/UX Prototyping',
-    subtitle: 'User Research, Wireframing & Rapid Validation',
-    description: 'Turning product concepts into wireframes and clickable prototypes, backed by user research and usability testing.',
-    deliverables: [
-      'Qualitative User Research & Persona Mapping',
-      'Low & High Fidelity Interactive Wireframing',
-      'Design System Foundations',
-      'Usability Audits & User Friction Elimination'
-    ],
-    technologies: ['User Research', 'Rapid Prototyping', 'Wireframing', 'UX Audits'],
-    badge: 'Discovery'
-  },
-  {
-    id: 'startup-advisory',
-    title: 'Startup Advisory',
-    subtitle: 'Product Scoping & Market Execution',
-    description: 'Helping turn early concepts into working. Focusing on core feature prioritization, practical sprint planning, and realistic launch steps.',
-    deliverables: [
-      'Value Proposition & Lean Canvas Definition',
-      'Minimum Viable Product Scope Definition',
-      'Sprint Planning & Agile Delivery Cadence',
-      'Market Launch Strategy & Operations'
-    ],
-    technologies: ['Product Management', 'GTM Strategy', 'Agile Operations', 'KPI Systems'],
-    badge: 'Strategy'
-  },
-  {
-    id: 'video-production',
-    title: 'Creative Video Production',
-    subtitle: 'Visual Content, Motion Storytelling & Media Assets',
-    description: 'End to end creative video production and editing for high engagement product launches, investor reels, event documentaries, and social media brand communication.',
-    deliverables: [
-      'Short Form Video Editing (Reels, TikTok, Shorts)',
-      'Promotional Launch Trailers & Product Overviews',
-      'Audio Synchronization, Sound Design & Color Grading',
-      'Motion Visual Graphics & Social Branding'
-    ],
-    technologies: ['Adobe Premiere Pro', 'CapCut', 'Alight Motion', 'Canva', 'VSCode'],
-    badge: 'Creative'
-  }
-];
-
 export const MY_CASE_STUDIES = [
   {
     id: 'banjar-youth',
@@ -145,6 +87,69 @@ We mapped the entire venue perimeter to eliminate blind spots, designed one-way 
     fullCase: `At CEKETER, bridging generational cohorts requires balancing operational structure with an open, engaging atmosphere. As Field Operations & Event Coordinator from 2024 to 2026, I managed logistical schedules and led live conflict resolution at site. 
 
 Additionally, I directed the documentation squad, translating raw event footage into compelling highlight reels using Premiere Pro and CapCut to drive community engagement.`
+  },
+  {
+    id: 'disaster-korlap',
+    title: 'Supporter Field Coordination & Crowd Formation Command',
+    organization: 'Department of Information Systems (DISASTER)',
+    role: 'Field Coordinator (Korlap) Supporter',
+    period: 'Oct 2026 – Present',
+    location: 'Surabaya, Indonesia',
+    category: 'Crowd & Safety Operations',
+    problem: 'Ensuring all department supporters arrive on time, remain organized, and move cohesively across multi-session campus events while adapting quickly to live schedule or technical changes.',
+    solution: 'Acted as the central liaison between event committees and supporters to relay instructions, manage crowd flow and formations, and monitor member readiness and discipline on-site.',
+    techStack: ['Field Coordination (Korlap)', 'Crowd Formation Management', 'Committee Liaison', 'Rapid Issue Response', 'On-Site Discipline'],
+    metrics: [
+      { label: 'Active Term', value: 'Oct 2026+' },
+      { label: 'Command Role', value: 'Korlap' },
+      { label: 'Department', value: 'IS - ITS' }
+    ],
+    impact: 'Maintained orderly supporter movement, cohesive formations, and a conducive atmosphere throughout event series through fast on-ground communication and proactive issue resolution.',
+    fullCase: `Serving as Field Coordinator (Korlap) for DISASTER at the Department of Information Systems, ITS, I coordinate supporters on the ground so every contingent arrives organized and moves in sync throughout each event.
+
+By bridging communication between the organizing committee and supporters, I deliver real-time directives, schedule adjustments, and technical updates while regulating crowd flow, formations, and member readiness to resolve field disruptions promptly.`
+  },
+  {
+    id: 'gpd-cup-festival',
+    title: 'GPD CUP & GPD Festival Field Operations Execution',
+    organization: 'GPD CUP & GPD Festival',
+    role: 'Operations Division Committee',
+    period: 'Oct 2026 – Nov 2026',
+    location: 'Surabaya, East Java',
+    category: 'Operations & Logistics',
+    problem: 'Supporting uninterrupted technical and on-site operations across simultaneous tournament and festival activities involving committee teams and participants.',
+    solution: 'Executed venue layout preparation, activity flow regulation, and cross-team coordination with committee members and participants under coordinator directives.',
+    techStack: ['Event Operations', 'Venue Staging', 'Activity Flow Control', 'Participant Coordination', 'Field Execution'],
+    metrics: [
+      { label: 'Event Scope', value: 'CUP & Fest' },
+      { label: 'Division', value: 'Operations' },
+      { label: 'Location', value: 'Surabaya' }
+    ],
+    impact: 'Delivered orderly, responsive, and on-schedule field execution across the GPD CUP and GPD Festival series, keeping venue transitions and participant flows running smoothly.',
+    fullCase: `As part of the Operations Division Committee for GPD CUP and GPD Festival in Surabaya, I supported day-to-day technical readiness and on-ground execution throughout the event run.
+
+Responsibilities included setting up event zones, regulating activity flow between match and festival schedules, and coordinating directly with fellow committee members and participants with discipline and speed.`
+  },
+  {
+    id: 'arduino-water-monitor',
+    title: 'Arduino-Based Water Level & Voltage Monitoring Prototype',
+    organization: 'Informatics Practical Exam (Final Project)',
+    role: 'Microcontroller & Sensor Developer (3-Member Team)',
+    period: 'Dec 2025',
+    location: 'Bali, Indonesia',
+    category: 'Hardware & Prototyping',
+    problem: 'Building an accurate, real-time water level and voltage monitoring prototype using microcontroller hardware capable of reliable direct sensor readings during live testing.',
+    solution: 'Collaborated in a 3-person team to assemble an Arduino-based water monitoring system programmed in C++, performing iterative sensor calibration until live test measurements achieved accurate readings.',
+    techStack: ['Arduino', 'C++', 'Microcontroller Prototyping', 'Sensor Calibration', 'Live Hardware Testing'],
+    metrics: [
+      { label: 'Team Size', value: '3 Members' },
+      { label: 'Language', value: 'C++ / Arduino' },
+      { label: 'Validation', value: 'Live Tested' }
+    ],
+    impact: 'Successfully demonstrated an accurately calibrated Arduino water level and voltage monitoring prototype during live Informatics practical evaluation.',
+    fullCase: `Developed for the December 2025 Informatics Practical Exam final project, this prototype combines microcontroller hardware assembly with embedded C++ programming to monitor water level and voltage in real time.
+
+Working collaboratively in a 3-member team, I built the Arduino-based water measurement logic in C++ and calibrated the sensors iteratively until live direct testing produced consistent, accurate data readings.`
   }
 ];
 
@@ -234,19 +239,54 @@ export const MY_EDUCATION = [
 
 export const MY_SKILLS_CATEGORIES = [
   {
-    category: 'Frontend Web Engineering',
-    items: ['HTML5 (Semantic)', 'CSS3 (Modern Layouts)', 'JavaScript (Vanilla ES6+)', 'Responsive Web Design', 'Web Accessibility (WCAG)', 'Tailwind CSS']
+    category: 'Web App Development & Frontend Engineering',
+    badge: 'Core Service',
+    subtitle: 'Frontend Architecture & High Performance Web',
+    description: 'Building fast, accessible, and responsive web applications using modern HTML5, CSS3, and JavaScript alongside software development tooling.',
+    deliverables: [
+      'Semantic & Accessible HTML5 / CSS3 Architectures',
+      'Modern Client Side JavaScript UI Components',
+      'Lighthouse Optimization & Sub-Second Latency'
+    ],
+    items: ['HTML5 (Semantic)', 'CSS3 (Modern Layouts)', 'JavaScript (Vanilla ES6+)', 'Responsive Web Design', 'Web Accessibility (WCAG)', 'Tailwind CSS', 'C++', 'Java', 'VS Code', 'Claude']
   },
   {
-    category: 'Product Design & Prototyping',
-    items: ['User Research', 'Wireframing', 'Rapid Clickable Prototyping', 'UX/UI Ergonomics', 'Design Systems', 'Usability Testing']
+    category: 'UI/UX & Hardware Prototyping',
+    badge: 'Discovery',
+    subtitle: 'User Research, Wireframing & Microcontroller Systems',
+    description: 'Turning product concepts into wireframes, clickable prototypes, and Arduino-based hardware prototypes backed by user research and sensor calibration.',
+    deliverables: [
+      'Qualitative User Research & Persona Mapping',
+      'Low & High Fidelity Interactive Wireframing',
+      'Design System Foundations',
+      'Usability Audits & Hardware Sensor Calibration'
+    ],
+    items: ['User Research', 'Wireframing', 'Rapid Clickable Prototyping', 'UX/UI Ergonomics', 'Design Systems', 'Usability Testing', 'Arduino', 'Microcontroller Prototyping', 'Sensor Calibration']
   },
   {
-    category: 'Venture Management & GTM',
-    items: ['Product Management', 'Go-To-Market (GTM) Strategy', 'Lean MVP Scoping', 'Agile Sprint Execution', 'Field Operations Logistics']
+    category: 'Venture Strategy & Operations',
+    badge: 'Strategy',
+    subtitle: 'Product Scoping, Market Execution & Field Leadership',
+    description: 'Helping turn early concepts into working products while coordinating agile sprints, campus committee logistics, and on-site field operations.',
+    deliverables: [
+      'Value Proposition & Lean Canvas Definition',
+      'Minimum Viable Product Scope Definition',
+      'Sprint Planning & Agile Delivery Cadence',
+      'Market Launch Strategy & Field Operations'
+    ],
+    items: ['Product Management', 'Go-To-Market (GTM) Strategy', 'Lean MVP Scoping', 'Agile Sprint Execution', 'Field Operations Logistics', 'Event & Committee Management', 'Field Coordination (Korlap)']
   },
   {
     category: 'Creative Video & Visual Media',
+    badge: 'Creative',
+    subtitle: 'Visual Content, Motion Storytelling & Media Assets',
+    description: 'End to end creative video production and editing for high engagement product launches, investor reels, event documentaries, and social media brand communication.',
+    deliverables: [
+      'Short Form Video Editing (Reels, TikTok, Shorts)',
+      'Promotional Launch Trailers & Product Overviews',
+      'Audio Synchronization, Sound Design & Color Grading',
+      'Motion Visual Graphics & Social Branding'
+    ],
     items: ['Adobe Premiere Pro', 'CapCut', 'Alight Motion', 'Canva', 'Motion Graphics', 'Visual Storytelling']
   }
 ];
@@ -257,6 +297,34 @@ export const MY_LANGUAGES = [
 ];
 
 export const MY_ORGANIZATIONS = [
+  {
+    role: 'Field Coordinator (Korlap) Supporter',
+    organization: 'Department of Information Systems (DISASTER)',
+    location: 'Surabaya, Indonesia',
+    period: 'Oct 2026 – Present',
+    description: 'Coordinate all supporters on the ground for punctual, organized, and cohesive movement during events. Act as the liaison between committees and supporters to relay directives, schedules, and technical updates, regulate crowd flow and formations, and respond promptly to on-site issues.'
+  },
+  {
+    role: 'Internal Division Intern Staff',
+    organization: 'TPKH ITS',
+    location: 'Surabaya, Indonesia',
+    period: 'Oct 2026 – Present',
+    description: 'Support internal organizational activities ranging from administrative management to cross-member coordination. Assist in planning and executing internal division work programs alongside officers and fellow staff while fostering team cohesion, active communication, and deadline accountability.'
+  },
+  {
+    role: 'Operations Division Committee',
+    organization: 'GPD CUP & GPD Festival',
+    location: 'Surabaya, East Java',
+    period: 'Oct 2026 – Nov 2026',
+    description: 'Supported on-site technical and operational continuity throughout the GPD CUP and GPD Festival series. Assisted with event area setup, activity flow regulation, committee-participant coordination, and disciplined execution under coordinator directives.'
+  },
+  {
+    role: 'Microcontroller & Sensor Developer (Final Project)',
+    organization: 'Arduino Water Level & Voltage Monitoring Prototype (Informatics Practical Exam)',
+    location: 'Bali, Indonesia',
+    period: 'Dec 2025',
+    description: 'Collaborated in a 3-person team to assemble an Arduino-based water monitoring system prototype. Built the water measurement logic in C++ and calibrated sensors to achieve accurate data readings during live testing.'
+  },
   {
     role: 'Event Logistics & Operations Lead',
     organization: 'Banjar Youth Organization (STT)',

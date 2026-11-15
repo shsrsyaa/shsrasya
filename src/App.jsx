@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, NAV_TABS } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { FocusSection } from './components/PassionsAndWork';
 import { EducationSection } from './components/EducationSection';
 import { ExperienceSection } from './components/ExperienceSection';
 import { SkillsSection } from './components/SkillsSection';
@@ -14,7 +13,7 @@ import { InteractiveBackground } from './components/InteractiveBackground';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { playTapSound } from './utils/sound';
 
-const VALID_TABS = ['about', 'focus', 'education', 'experience', 'skills', 'connect'];
+const VALID_TABS = ['about', 'education', 'experience', 'skills', 'connect'];
 
 const getInitialTab = () => {
   if (typeof document !== 'undefined') {
@@ -48,7 +47,6 @@ const getInitialTab = () => {
 export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [activeTab, setActiveTab] = useState(getInitialTab);
-  const [selectedServiceForInquiry, setSelectedServiceForInquiry] = useState('Web App Development');
 
   // Synchronize activeTab with URL pathname, popstate, and hash changes
   useEffect(() => {
@@ -81,11 +79,6 @@ export default function App() {
         el.scrollIntoView({ behavior: 'smooth' });
       }
     }
-  };
-
-  const handleSelectService = (serviceTitle) => {
-    setSelectedServiceForInquiry(serviceTitle);
-    handleTabChange('connect');
   };
 
   const currentTabIndex = VALID_TABS.indexOf(activeTab);
@@ -131,38 +124,28 @@ export default function App() {
               <Hero />
             )}
 
-            {/* 2. Focus & Expertise */}
-            {activeTab === 'focus' && (
-              <FocusSection 
-                onSelectService={handleSelectService} 
-                onNavigateToTab={handleTabChange}
-              />
-            )}
-
-            {/* 3. Education & Languages */}
+            {/* 2. Education & Languages */}
             {activeTab === 'education' && (
               <EducationSection 
                 onOpenResume={() => setIsResumeOpen(true)}
               />
             )}
 
-            {/* 4. Experience & Leadership */}
+            {/* 3. Experience & Leadership */}
             {activeTab === 'experience' && (
               <ExperienceSection />
             )}
 
-            {/* 5. Skills & Toolkit */}
+            {/* 4. Capabilities & Toolkit */}
             {activeTab === 'skills' && (
               <SkillsSection 
                 onNavigateToTab={handleTabChange}
               />
             )}
 
-            {/* 6. Connect */}
+            {/* 5. Connect */}
             {activeTab === 'connect' && (
-              <Contact 
-                initialService={selectedServiceForInquiry} 
-              />
+              <Contact />
             )}
 
             {/* Bottom Tab Pagination Controls */}

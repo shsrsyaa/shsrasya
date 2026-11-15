@@ -26,11 +26,11 @@ import { playTapSound } from '../utils/sound';
 export const EducationSection = ({ onOpenResume }) => {
   const getToolkitIcon = (category) => {
     switch (category) {
-      case 'Frontend Web Engineering':
+      case 'Web App Development & Frontend Engineering':
         return <Code className="w-4 h-4 text-white" />;
-      case 'Product Design & Prototyping':
+      case 'UI/UX & Hardware Prototyping':
         return <Layers className="w-4 h-4 text-zinc-300" />;
-      case 'Venture Management & GTM':
+      case 'Venture Strategy & Operations':
         return <CheckCircle2 className="w-4 h-4 text-white" />;
       case 'Creative Video & Visual Media':
         return <Video className="w-4 h-4 text-zinc-300" />;
