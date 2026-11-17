@@ -12,7 +12,6 @@ export const MY_PROFILE = {
   origin: 'Bali, Indonesia',
   email: 'tuddechnnel07@gmail.com',
   bio: 'Information Systems student at Institut Teknologi Sepuluh Nopember (ITS) focused on web development, clean frontend interfaces, and practical software applications.',
-  extendedBio: 'Building responsive websites and interactive applications using HTML5, CSS3, and JavaScript, with hands-on experience in student organizations, community leadership, and event operations.',
   avatar: rasyaHeadshot,
   itsPhoto: itsSidePhoto,
   socials: {
