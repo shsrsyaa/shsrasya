@@ -41,9 +41,6 @@ export const SkillsSection = ({ onNavigateToTab }) => {
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
               Capabilities &amp; <span className="silver-text">Toolkit</span><span className="text-white">.</span>
             </h2>
-            <p className="mt-3 text-zinc-300 text-xs sm:text-sm leading-relaxed">
-              Direct disciplines, deliverables, technologies, and operational frameworks engineered for high performance digital products, prototypes, and ventures.
-            </p>
           </div>
         </ScrollReveal>
 
@@ -75,11 +72,6 @@ export const SkillsSection = ({ onNavigateToTab }) => {
                           {cat.subtitle}
                         </p>
                       </div>
-
-                      {/* Description */}
-                      <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                        {cat.description}
-                      </p>
 
                       {/* Key Deliverables */}
                       {cat.deliverables && cat.deliverables.length > 0 && (
@@ -124,10 +116,7 @@ export const SkillsSection = ({ onNavigateToTab }) => {
 
           {/* Quick summary banner with CTA */}
           <ScrollReveal className="p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="space-y-1 text-xs">
-              <p className="font-extrabold text-white text-sm">Full-Stack Digital Execution Capabilities</p>
-              <p className="text-zinc-400">Available for web app development contracts, rapid design prototyping sprints, and venture advisory.</p>
-            </div>
+            <div className="space-y-1 text-xs" />
             {onNavigateToTab && (
               <button
                 type="button"

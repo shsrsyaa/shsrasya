@@ -39,9 +39,6 @@ export const Contact = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
             Connect &amp; <span className="silver-text">Initiate</span><span className="text-white">.</span>
           </h2>
-          <p className="mt-3 text-zinc-300 text-xs sm:text-sm leading-relaxed">
-            Direct communication channels for web development architectures, rapid product prototyping, and venture collaborations.
-          </p>
         </ScrollReveal>
 
         {/* Clean, Streamlined Direct Contact Grid */}
@@ -70,13 +67,6 @@ export const Contact = () => {
                       Verified
                     </span>
                   </div>
-
-                  <p className="text-xs text-white leading-relaxed font-bold break-all">
-                    {MY_PROFILE.email}
-                  </p>
-                  <p className="text-zinc-400 text-xs leading-relaxed">
-                    Fast response for development projects, strategic inquiries, and venture discussions.
-                  </p>
                 </div>
 
                 <div className="flex items-center gap-2 pt-2">
@@ -133,13 +123,6 @@ export const Contact = () => {
                       Active
                     </span>
                   </div>
-
-                  <p className="text-xs text-white leading-relaxed font-bold">
-                    Personal &amp; Creative Portfolio
-                  </p>
-                  <p className="text-zinc-400 text-xs leading-relaxed">
-                    Direct messages regarding design prototypes, creative media showcases, and venture collaborations.
-                  </p>
                 </div>
 
                 <div className="pt-2">
@@ -182,13 +165,6 @@ export const Contact = () => {
                       Network
                     </span>
                   </div>
-
-                  <p className="text-xs text-white leading-relaxed font-bold">
-                    {MY_PROFILE.fullName}
-                  </p>
-                  <p className="text-zinc-400 text-xs leading-relaxed">
-                    Formal enterprise networking, academic milestones, and engineering collaborations.
-                  </p>
                 </div>
 
                 <div className="pt-2">

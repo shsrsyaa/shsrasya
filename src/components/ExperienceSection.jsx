@@ -16,14 +16,7 @@ import { TiltCard } from './TiltCard';
 import { playTapSound } from '../utils/sound';
 
 export const ExperienceSection = () => {
-  const [selectedFilter, setSelectedFilter] = useState('All');
   const [activeModalStudy, setActiveModalStudy] = useState(null);
-
-  const filters = ['All', 'Operations & Logistics', 'Crowd & Safety Operations', 'Community Leadership', 'Hardware & Prototyping'];
-
-  const filteredStudies = selectedFilter === 'All'
-    ? MY_CASE_STUDIES
-    : MY_CASE_STUDIES.filter(s => s.category === selectedFilter);
 
   const getOrgIcon = (orgId) => {
     switch (orgId) {
@@ -65,35 +58,11 @@ export const ExperienceSection = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
             Field Operations &amp; <span className="silver-text">Leadership</span><span className="text-white">.</span>
           </h2>
-          <p className="mt-3 text-zinc-300 text-xs sm:text-sm leading-relaxed">
-            Real-world execution track records in festival perimeter security, multi-day traditional logistics, and community leadership.
-          </p>
         </ScrollReveal>
-
-        {/* Filter Controls */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {filters.map((category) => (
-            <button
-              key={category}
-              type="button"
-              onClick={() => {
-                playTapSound(500, 0.02);
-                setSelectedFilter(category);
-              }}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                selectedFilter === category
-                  ? 'bg-white/20 text-white border border-white/30 backdrop-blur-sm'
-                  : 'bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 border border-white/10'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
 
         {/* Case Studies Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch mb-16">
-          {filteredStudies.map((study, idx) => (
+          {MY_CASE_STUDIES.map((study, idx) => (
             <ScrollReveal key={study.id} delay={idx * 80} className="h-full">
               <TiltCard className="h-full">
                 <div className="p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/15 hover:border-white/30 shadow-2xl space-y-5 h-full flex flex-col justify-between transition-all duration-300 group">

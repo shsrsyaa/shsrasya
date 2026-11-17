@@ -39,7 +39,6 @@ export const MY_CASE_STUDIES = [
     techStack: ['Operations Manifesting', 'Resource Logistics', 'Safety Protocols', 'Audio Visual Staging', 'Cross Functional Leadership'],
     metrics: [
       { label: 'Operational Downtime', value: '12 Hours' },
-      { label: 'Event Delivery Rate', value: '90% On-Time' },
       { label: 'Field Crew Supervised', value: '40+ Members' }
     ],
     impact: 'Achieved 100% on-time milestone delivery across two consecutive annual terms. Zero equipment failures or power blackouts during peak ceremonial events, earning sustained community leadership trust.',
@@ -80,7 +79,6 @@ We mapped the entire venue perimeter to eliminate blind spots, designed one-way 
     techStack: ['Field Coordination', 'Agile Timeline Enforcement', 'Media Production Direction', 'Conflict Mediation', 'Community Engagement'],
     metrics: [
       { label: 'Active Program Cycle', value: '2+ Years' },
-      { label: 'Timeline Adherence', value: '98%' },
       { label: 'Media Deliverables', value: '50+ Assets' }
     ],
     impact: 'Strengthened cross-cohort retention and collaboration, maintaining a 98% on schedule operational track record across multiple community programs and delivering polished social visual assets.',
@@ -248,7 +246,7 @@ export const MY_SKILLS_CATEGORIES = [
       'Modern Client Side JavaScript UI Components',
       'Lighthouse Optimization & Sub-Second Latency'
     ],
-    items: ['HTML5 (Semantic)', 'CSS3 (Modern Layouts)', 'JavaScript (Vanilla ES6+)', 'Responsive Web Design', 'Web Accessibility (WCAG)', 'Tailwind CSS', 'C++', 'Java', 'VS Code', 'Claude']
+    items: ['HTML5 (Semantic)', 'CSS3 (Modern Layouts)', 'JavaScript (Vanilla ES6+)', 'Tailwind CSS', 'C++', 'Java', 'Claude']
   },
   {
     category: 'UI/UX & Hardware Prototyping',
@@ -261,7 +259,7 @@ export const MY_SKILLS_CATEGORIES = [
       'Design System Foundations',
       'Usability Audits & Hardware Sensor Calibration'
     ],
-    items: ['User Research', 'Wireframing', 'Rapid Clickable Prototyping', 'UX/UI Ergonomics', 'Design Systems', 'Usability Testing', 'Arduino', 'Microcontroller Prototyping', 'Sensor Calibration']
+    items: ['User Research', 'Wireframing', 'UX/UI Ergonomics', 'Design Systems', 'Arduino', 'Sensor Calibration']
   },
   {
     category: 'Venture Strategy & Operations',
@@ -274,7 +272,7 @@ export const MY_SKILLS_CATEGORIES = [
       'Sprint Planning & Agile Delivery Cadence',
       'Market Launch Strategy & Field Operations'
     ],
-    items: ['Product Management', 'Go-To-Market (GTM) Strategy', 'Lean MVP Scoping', 'Agile Sprint Execution', 'Field Operations Logistics', 'Event & Committee Management', 'Field Coordination (Korlap)']
+    items: ['Product Management', 'Field Operations Logistics', 'Event & Committee Management', 'Field Coordination (Korlap)']
   },
   {
     category: 'Creative Video & Visual Media',
@@ -287,7 +285,7 @@ export const MY_SKILLS_CATEGORIES = [
       'Audio Synchronization, Sound Design & Color Grading',
       'Motion Visual Graphics & Social Branding'
     ],
-    items: ['Adobe Premiere Pro', 'CapCut', 'Alight Motion', 'Canva', 'Motion Graphics', 'Visual Storytelling']
+    items: ['Adobe Premiere Pro', 'CapCut', 'Alight Motion', 'Canva', 'Motion Graphics']
   }
 ];
 
